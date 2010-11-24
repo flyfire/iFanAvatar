@@ -1,94 +1,118 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" />
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>爱饭样式头像生成器</title>
-<link href="./site_media/css/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="./site_media/js/jquery.js"></script>
-<script type="text/javascript" src="./site_media/js/jquery.form.js"></script>    
-<script type="text/javascript"> 
-        
-       $(document).ready(function() { 
-           // bind form using ajaxForm 
-           $('#settings').ajaxForm({ 
-               // target identifies the element(s) to update with the server response 
-               target: '#pic_output', 
-        
-               // success identifies the function to invoke when the server response 
-               // has been received; here we apply a fade-in effect to the new content 
-               success: function() { 
-                   $('#pic_output').fadeIn('slow'); 
-               } 
-           }); 
-       });       
-        
-    </script> 
-</head>
-<body><div id="wrapper">
-<h1>爱饭样式头像生成器</h1>
-<div id="content">
-<p>版本 0.1</p>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>
+			爱饭样式头像生成器
+		</title>
+		<link href="./site_media/css/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="./site_media/js/jquery.js">
+		</script>
+		<script type="text/javascript" src="./site_media/js/jquery.form.js">
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() { 
+			           // bind form using ajaxForm 
+			           $('#settings').ajaxForm({ 
+			               // target identifies the element(s) to update with the server response 
+			               target: '#pic_output', 
+			        
+			               // success identifies the function to invoke when the server response 
+			               // has been received; here we apply a fade-in effect to the new content 
+			               success: function() { 
+			                   $('#pic_output').fadeIn('slow'); 
+			               } 
+			           }); 
+			       });
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<h1>
+				爱饭样式头像生成器
+			</h1>
+			<div id="content">
+				<p>
+					版本 0.1
+				</p>
+				<p class="atention">
+					饭否是我们永远的家
+					<a href="http://fanfou.com/">http://fanfou.com/</a>
+				</p>
+				<form id="settings" action="/gen" method="get">
+					<table width="500px" border="0" cellspacing="0" cellpadding="2">
+						<tr>
+							<td>
+								<label for="title">
+									<strong>背景颜色</strong>
+									<br />
+									<span id="memo"> 爱饭背景颜色为“天蓝” </span>
+								</label>
+							</td>
+							<td>
+								<select name="bg">
+									<option value="logo2.png"> 亮红 </option>
+									<option value="logo32.png"> 橙黄 </option>
+									<option value="logo52.png"> 黄色 </option>
+									<option value="logo72.png"> 草绿 </option>
+									<option value="logo122.png"> 绿色 </option>
+									<option value="logo172.png"> 青色 </option>
+									<option value="logo192.png" selected> 天蓝 </option>
+									<option value="logo212.png"> 深蓝 </option>
+									<option value="logo262.png"> 靛蓝 </option>
+									<option value="logo292.png"> 紫色 </option>
+									<option value="logo312.png"> 玫瑰 </option>
+									<option value="logo332.png"> 洋红 </option>
+									<option value="logogray.png"> 灰色 </option>
+									<option value="logoblack.png"> 黑色 </option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="subtitle">
+									<strong> 文字 </strong>
+									<br />
+									<span id="memo"> 请输入单个汉字或全角英文字符 </span>
+								</label>
+							</td>
+							<td>
+								<input type="text" name="char" style="width: 100px;" />
+							</td>
+						</tr>
+                        <tr>
+							<td>
+								<label for="title">
+									<strong>选择字体</strong>
+									<br />
+									<span id="memo"> 默认字体为雅黑 </span>
+								</label>
+							</td>
+							<td>
+								<select name="font"> 
+									<option value="iYaHei.ttf" selected>雅黑</option> 
+									<option value="fzqtj.ttf">方正启体简</option>
+                                    <option value="liuti.ttf">柳体</option>
+								</select>
+							</td>
+						</tr>
 
-<p class="atention">饭否是我们永远的家 <a href="http://fanfou.com/">http://fanfou.com/</a></p>
-<form id="settings" action="/generate" method="post">
-	<table width="500px" border="0" cellspacing="0" cellpadding="2">
-		<tr>
-			<td><label for="title"><strong>背景颜色</strong><br />
-			<span id="memo">爱饭背景颜色为“天蓝”</span></label></td>
-			<td><select name="bg">
-			  <option value="logo2.png">亮红</option> 
-              <option value="logo32.png">橙黄</option> 
-              <option value="logo52.png">黄色</option>
-              <option value="logo72.png">草绿</option>
-              <option value="logo122.png">绿色</option> 
-              <option value="logo172.png">青色</option> 
-              <option value="logo192.png" selected>天蓝</option> 
-              <option value="logo212.png">深蓝</option>
-              <option value="logo262.png">靛蓝</option> 
-              <option value="logo292.png">紫色</option>
-              <option value="logo312.png">玫瑰</option> 
-              <option value="logo332.png">洋红</option> 
-              <option value="logogray.png">灰色</option> 
-              <option value="logoblack.png">黑色</option> 
-		    </select></td>
-		</tr>
-		<tr>
-			<td><label for="subtitle"><strong>文字</strong><br />
-
-			  <span id="memo">请输入单个汉字或全角英文字符</span></label></td>
-			<td><input type="text" name="dtext" style="width: 100px;" /></td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td><input id="submitbutton" type="submit" value="生成" style="width: 80px; height:30px" /> </td>
-		</tr>
-	</table>
-
-</form>
-	<div class="download">图像生成后，请右键点击图片，选择图片另存为，并保存成 PNG 格式。</div>
-	<div id="pic_output"></div> 
-</div>
-<div id="footer">
-    <strong>动态</strong>    
-    <ul>
-    {% for tip in tips %}
-    <li>
-        <strong>{{tip.date}}：</strong>{{tip.tips|safe}}
-    </li>
-    {% endfor %}
-    </ul>
-    <br />    
-    <br />
-    <div align="center">
-      <p><a href="http://bit.ly/ugn2k" target="_blank">留言</a> | <a href="http://bit.ly/Bg7Xo" target="_blank">查看</a><br />
-        by <a href="http://zhasm.com/" target="_blank" title="深柳堂">.rex</a>(<a href="http://fanfou.com/zhasm" target="_blank" title=".rex的饭否"><img src="http://zhasm.alwaysdata.net/site_media/templates/default/fanfouicon.png" height="20" width="20" /></a>, <a href="http://t.sina.com.cn/zhasm" title="zhasm的新浪微博" target="_blank">新浪微博</a>) &amp; <a href="http://anegie.cn" target="_blank">Kevin Deng</a> (<a href="http://fanfou.com/anegie" target="_blank" title="Kevin的饭否"><img src="http://zhasm.alwaysdata.net/site_media/templates/default/fanfouicon.png" height="20" width="20" /></a>).<br />
-        <br />
-        powered by django with PIL supported<br /> 
-        ©2009 all rights reserved</p>
-</div>
-</div>
-</div>
-<div style="height:20px;"></div>
-<script type="text/javascript" src="http://js.tongji.linezing.com/1199782/tongji.js"></script><noscript><a href="http://www.linezing.com"><img src="http://img.tongji.linezing.com/1199782/tongji.gif"/></a></noscript>
-</body>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td>
+								<input id="submitbutton" type="submit" value="生成" style="width: 80px; height:30px" />
+							</td>
+						</tr>
+					</table>
+				</form>
+				<div class="download">
+					图像生成后，请右键点击图片，选择图片另存为，并保存成 PNG 格式。
+				</div>
+				<div id="pic_output">
+				</div>
+			</div>
+        </div> 
+	</body>
 </html>

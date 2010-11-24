@@ -31,7 +31,7 @@ def findPath(path):
 def fontFile(font):
     return findPath("font/%s" % font) 
 
-def my_draw(request,text,bg, font):
+def my_draw(request,text,bg, font, color):
     """draw avatar. Core part of the program. 
     """
     pure=md5(text+bg+font).hexdigest()+".png" 
@@ -57,7 +57,7 @@ def my_draw(request,text,bg, font):
 
         region=imgfilted.crop(box)
         image_a.paste(region,position)
-        img_draw.text(textPosition,text,font=font,fill="#ffffff") 
+        img_draw.text(textPosition,text,font=font,fill=color) 
         
         image_a.save(filename)
 

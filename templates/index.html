@@ -8,8 +8,20 @@
 		<link href="./site_media/css/style.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="./site_media/js/jquery.js">
 		</script>
-		<script type="text/javascript" src="./site_media/js/jquery.form.js">
-		</script>
+		<script type="text/javascript" src="./site_media/js/jquery.form.js"></script>
+		
+		<!-- color picker begins-->
+		
+		<link rel="stylesheet" href="./site_media/colorpicker/css/colorpicker.css" type="text/css" />
+	    <link rel="stylesheet" media="screen" type="text/css" href="./site_media/colorpicker/css/layout.css" />
+
+		<script type="text/javascript" src="./site_media/colorpicker/js/colorpicker.js"></script>
+	    <script type="text/javascript" src="./site_media/colorpicker/js/eye.js"></script>
+	    <script type="text/javascript" src="./site_media/colorpicker/js/utils.js"></script>
+	    <script type="text/javascript" src="./site_media/colorpicker/js/layout.js?ver=1.0.2"></script>
+	
+		<!-- color picker ends-->
+		
 		<script type="text/javascript">
 			$(document).ready(function() { 
 			           // bind form using ajaxForm 
@@ -23,6 +35,9 @@
 			                   $('#pic_output').fadeIn('slow'); 
 			               } 
 			           }); 
+			
+						
+			
 			       });
 		</script>
 	</head>
@@ -41,6 +56,24 @@
 				</p>
 				<form id="settings" action="/gen" method="get">
 					<table width="500px" border="0" cellspacing="0" cellpadding="2">
+						<tr>
+							<td>
+								<label for="title">
+									<strong>预设</strong>
+									<br />
+									<span id="memo">选择爱饭模式或饭否模式</span>
+								</label>
+							</td>
+							<td>
+								<select name="bg">
+								
+									<option value="aifan" selected>爱饭</option>
+									<option value="fanfou"> 饭否</option>
+									<option value="customize">自定义</option>
+								</select>
+							</td>
+							
+						</tr>
 						<tr>
 							<td>
 								<label for="title">
@@ -80,6 +113,59 @@
 								<input type="text" name="char" style="width: 100px;" />
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<label for="subtitle">
+									<strong> 文字颜色 </strong>
+									<br />
+									<span id="memo">默认白色 #FFFFFF </span>
+								</label>
+							</td>
+							<td>
+								<input type="text" name="color" id="color" style="width: 100px;" readonly="true"/>
+							</td>
+							<td>
+								<div id="colorSelector">
+									<div style="background-color: #00aaff">
+								</div>
+							</div>
+								<script type="text/javascript" charset="utf-8">
+									//
+									function setColor(color)
+									{
+										//color is a hex string #abcdf0
+										$("#color").val(color);
+										$('#colorSelector div').css('backgroundColor', color);
+										//$('#colorSelector').ColorPickerSetColor(color);
+									}
+									setColor("#FFFFFF");
+									$('#colorSelector').ColorPicker({
+										color: "#00aaff",
+										onShow: function (colpkr) {
+											$(colpkr).fadeIn(500);
+											return false;
+										},
+										onHide: function (colpkr) {
+											$(colpkr).fadeOut(500);
+											return false;
+										},
+										onChange: function (hsb, hex, rgb) {
+											$('#colorSelector div').css('backgroundColor', '#' + hex);
+											//$("#color").val("#"+hex);
+											//setColor("#"+hex);
+										},
+										onSubmit: function (hsb, hex, rgb) {
+											$('#colorSelector div').css('backgroundColor', '#' + hex);
+											//$("#color").val("#"+hex);
+											setColor("#"+hex);
+										}
+										
+										
+										//$('#colorSelector').ColorPickerSetColor("#00aaff");
+									});
+								</script>
+							</td>
+						</tr>
                         <tr>
 							<td>
 								<label for="title">
@@ -96,7 +182,17 @@
 								</select>
 							</td>
 						</tr>
-
+						<tr>
+							<td>
+								头像边框&nbsp;<input type="checkbox" name="border" value="" id="border">
+							</td>
+							<td>
+								显示阴影&nbsp;<input type="checkbox" name="shadow" value="" id="shadow">
+							</td>
+							<td>
+								文字高光&nbsp;<input type="checkbox" name="highlight" value="" id="highlight">
+							</td>
+						</tr>
 						<tr>
 							<td>
 								&nbsp;

@@ -12,6 +12,7 @@ def generate(request):
     bg = request.GET.get('bg', '')  #can be changed to POST
     char=request.GET.get('char', '')
     font=request.GET.get('font', '')
+    color=request.GET.get('color', '')
     print 'we got font', font
-    return my_draw(request,char,bg,font)
+    return my_draw(request, char, bg, font, color)
     

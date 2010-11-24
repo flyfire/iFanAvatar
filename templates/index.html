@@ -21,25 +21,10 @@
 	    <script type="text/javascript" src="./site_media/colorpicker/js/layout.js?ver=1.0.2"></script>
 	
 		<!-- color picker ends-->
-		
-		<script type="text/javascript">
-			$(document).ready(function() { 
-			           // bind form using ajaxForm 
-			           $('#settings').ajaxForm({ 
-			               // target identifies the element(s) to update with the server response 
-			               target: '#pic_output', 
-			        
-			               // success identifies the function to invoke when the server response 
-			               // has been received; here we apply a fade-in effect to the new content 
-			               success: function() { 
-			                   $('#pic_output').fadeIn('slow'); 
-			               } 
-			           }); 
-			
-						
-			
-			       });
-		</script>
+
+		<!-- main js --> 
+        <script type="text/javascript" src="./site_media/js/main.js"></script> 
+
 	</head>
 	<body>
 		<div id="wrapper">
@@ -54,7 +39,7 @@
 					饭否是我们永远的家
 					<a href="http://fanfou.com/">http://fanfou.com/</a>
 				</p>
-				<form id="settings" action="/gen" method="get">
+				<form id="settings" action="/gen" method="post">
 					<table width="500px" border="0" cellspacing="0" cellpadding="2">
 						<tr>
 							<td>
@@ -65,8 +50,7 @@
 								</label>
 							</td>
 							<td>
-								<select name="bg">
-								
+								<select id="preset"> 
 									<option value="aifan" selected>爱饭</option>
 									<option value="fanfou"> 饭否</option>
 									<option value="customize">自定义</option>
@@ -83,7 +67,7 @@
 								</label>
 							</td>
 							<td>
-								<select name="bg">
+								<select name="bg" id="bg">
 									<option value="logo2.png"> 亮红 </option>
 									<option value="logo32.png"> 橙黄 </option>
 									<option value="logo52.png"> 黄色 </option>
@@ -110,10 +94,10 @@
 								</label>
 							</td>
 							<td>
-								<input type="text" name="char" style="width: 100px;" />
+								<input type="text" id='text'/>
 							</td>
 						</tr>
-						<tr>
+                        <tr>
 							<td>
 								<label for="subtitle">
 									<strong> 文字颜色 </strong>
@@ -122,50 +106,40 @@
 								</label>
 							</td>
 							<td>
-								<input type="text" name="color" id="color" style="width: 100px;" readonly="true"/>
-							</td>
-							<td>
-								<div id="colorSelector">
-									<div style="background-color: #00aaff">
-								</div>
-							</div>
-								<script type="text/javascript" charset="utf-8">
-									//
-									function setColor(color)
-									{
-										//color is a hex string #abcdf0
-										$("#color").val(color);
-										$('#colorSelector div').css('backgroundColor', color);
-										//$('#colorSelector').ColorPickerSetColor(color);
-									}
-									setColor("#FFFFFF");
-									$('#colorSelector').ColorPicker({
-										color: "#00aaff",
-										onShow: function (colpkr) {
-											$(colpkr).fadeIn(500);
-											return false;
-										},
-										onHide: function (colpkr) {
-											$(colpkr).fadeOut(500);
-											return false;
-										},
-										onChange: function (hsb, hex, rgb) {
-											$('#colorSelector div').css('backgroundColor', '#' + hex);
-											//$("#color").val("#"+hex);
-											//setColor("#"+hex);
-										},
-										onSubmit: function (hsb, hex, rgb) {
-											$('#colorSelector div').css('backgroundColor', '#' + hex);
-											//$("#color").val("#"+hex);
-											setColor("#"+hex);
-										}
-										
-										
-										//$('#colorSelector').ColorPickerSetColor("#00aaff");
-									});
-								</script>
+								<input type="text" id="textColor" readonly="true"/>
 							</td>
 						</tr>
+
+						<tr>
+							<td>
+								<label for="subtitle">
+									<strong> 阴影颜色 </strong>
+									<br />
+									<span id="memo">默认白色 #FFFFFF </span>
+								</label>
+							</td>
+							<td>
+								<input type="text" id="shadowColor" readonly="true"/>
+							</td>
+						</tr>
+                        <script type="text/javascript" charset="utf-8">
+                            $('#textColor, #shadowColor').ColorPicker({
+                                onSubmit: function(hsb, hex, rgb, el) {
+                                    hex=hex.toUpperCase()
+                                    $(el).val("#"+hex);
+                                    $(el).ColorPickerHide();
+                                },
+                                onBeforeShow: function () {
+                                    $(this).ColorPickerSetColor(this.value);
+                                }
+                            })
+                            .bind('keyup', function(){
+                                $(this).ColorPickerSetColor(this.value.replace("#",''));
+                            });
+                            $("#textColor").val("#FFFFFF");
+                            $("#shadowColor").val("#000000");
+
+                        </script>
                         <tr>
 							<td>
 								<label for="title">
@@ -175,7 +149,7 @@
 								</label>
 							</td>
 							<td>
-								<select name="font"> 
+								<select id="font"> 
 									<option value="iYaHei.ttf" selected>雅黑</option> 
 									<option value="fzqtj.ttf">方正启体简</option>
                                     <option value="liuti.ttf">柳体</option>
@@ -184,25 +158,31 @@
 						</tr>
 						<tr>
 							<td>
-								头像边框&nbsp;<input type="checkbox" name="border" value="" id="border">
+                                <label for="title">
+									<strong>其它选项</strong>
+									<br />
+									<span id="memo"> 美化细节 </span>
+								</label>
 							</td>
 							<td>
-								显示阴影&nbsp;<input type="checkbox" name="shadow" value="" id="shadow">
-							</td>
-							<td>
-								文字高光&nbsp;<input type="checkbox" name="highlight" value="" id="highlight">
+                                    <ul>
+                                         <li><input type="checkbox" id="border">&nbsp;头像边框</li>
+                                         <li><input type="checkbox" id="shadow">&nbsp;显示阴影 </li> 
+                                         <li><input type="checkbox" id="highlight">&nbsp;文字高光</li> 
+                                    </ul> 
+
 							</td>
 						</tr>
 						<tr>
 							<td>
 								&nbsp;
 							</td>
-							<td>
-								<input id="submitbutton" type="submit" value="生成" style="width: 80px; height:30px" />
-							</td>
+							
 						</tr>
 					</table>
 				</form>
+
+								<input id="submitbutton" type="submit" value="生成" style="width: 80px; height:30px" />
 				<div class="download">
 					图像生成后，请右键点击图片，选择图片另存为，并保存成 PNG 格式。
 				</div>

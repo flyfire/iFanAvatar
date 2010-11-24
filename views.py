@@ -9,10 +9,25 @@ def home(request):
     return render_to_response('index.html')
 
 def generate(request):
+
     bg = request.GET.get('bg', '')  #can be changed to POST
-    char=request.GET.get('char', '')
+    text=request.GET.get('text', '')
     font=request.GET.get('font', '')
-    color=request.GET.get('color', '')
-    print 'we got font', font
-    return my_draw(request, char, bg, font, color)
+    textColor=request.GET.get('textColor', '')
+    shadowColor=request.GET.get('shadowColor', '')
+
+    #boolean args
+    border=eval(request.GET.get('border', '')) 
+    shadow=eval(request.GET.get('shadow', '')) 
+    highlight=eval(request.GET.get('highlight', '')) 
+
+    return my_draw(request,
+            bg=bg,
+            text=text,
+            font=font,
+            textColor=textColor,
+            shadowColor=shadowColor,
+            border=border,
+            shadow=shadow,
+            highlight=highlight)
     

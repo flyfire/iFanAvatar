@@ -9,7 +9,20 @@
 		<script type="text/javascript" src="./site_media/js/jquery.js">
 		</script>
 		<script type="text/javascript" src="./site_media/js/jquery.form.js"></script>
-		
+		<script type="text/javascript" charset="utf-8">
+			function getCheckedStatus(checkboxID)
+		    {
+		        //return 1 if checked, or 0 
+		        if ($(checkboxID).attr('checked'))
+		        {
+		            return 'True';
+		        }
+		        else
+		        {
+		            return 'False';
+		        }
+		    }
+		</script>
 		<!-- color picker begins-->
 		
 		<link rel="stylesheet" href="./site_media/colorpicker/css/colorpicker.css" type="text/css" />
@@ -106,7 +119,7 @@
 								</label>
 							</td>
 							<td>
-								<input type="text" id="textColor" readonly="true"/>
+								<input type="text" id="textColor" name="textColor" readonly="true"/>
 							</td>
 						</tr>
 
@@ -119,19 +132,44 @@
 								</label>
 							</td>
 							<td>
-								<input type="text" id="shadowColor" readonly="true"/>
+								<input type="text" id="shadowColor" name="shadowColor" readonly="true"/>
 							</td>
 						</tr>
                         <script type="text/javascript" charset="utf-8">
                             $('#textColor, #shadowColor').ColorPicker({
+								onChange: function(hsb, hex, rgb, el) {
+									function getCheckedStatus(checkboxID)
+								    {
+								        //return 1 if checked, or 0 
+								        if ($(checkboxID).attr('checked'))
+								        {
+								            return 'True';
+								        }
+								        else
+								        {
+								            return 'False';
+								        }
+								    }
+									$(el).val("#"+hex);
+									if ($(el).attr("id")=="textColor")
+									{
+										$("#text").css('color', '#' + hex);
+									}
+									else if (getCheckedStatus("#shadow")=='True')
+									{//text-shadow: 0.1em 0.1em #333
+										$("#text").css('text-shadow', '#' + hex+" 2px 3px 2px");
+									}
+									
+                                },
                                 onSubmit: function(hsb, hex, rgb, el) {
-                                    hex=hex.toUpperCase()
+									hex=hex.toUpperCase();
                                     $(el).val("#"+hex);
                                     $(el).ColorPickerHide();
                                 },
                                 onBeforeShow: function () {
                                     $(this).ColorPickerSetColor(this.value);
                                 }
+								
                             })
                             .bind('keyup', function(){
                                 $(this).ColorPickerSetColor(this.value.replace("#",''));
@@ -167,7 +205,7 @@
 							<td>
                                     <ul>
                                          <li><input type="checkbox" id="border">&nbsp;头像边框</li>
-                                         <li><input type="checkbox" id="shadow">&nbsp;显示阴影 </li> 
+                                         <li><input type="checkbox" id="shadow" checked="on">&nbsp;显示阴影 </li> 
                                          <li><input type="checkbox" id="highlight">&nbsp;文字高光</li> 
                                     </ul> 
 

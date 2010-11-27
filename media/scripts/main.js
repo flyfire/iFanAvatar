@@ -17,7 +17,7 @@ $(document).ready(function() {
     function getArgs()
     {
         var bg=$("#bg").val();     
-        var text=$("#text").val();
+        var text=$("#text_input").val();
         var textColor=$("#textColor").val();
         var shadowColor=$("#shadowColor").val();
         var font=$("#font").val();
@@ -37,7 +37,7 @@ $(document).ready(function() {
         };
     }
 
-    $('#submitbutton').click(function(){
+    $('#btn_gen').click(function(){
         $.get('/gen', getArgs(),function(data) {
             $("#pic_output").html(data);
             }); //request ends
@@ -46,7 +46,7 @@ $(document).ready(function() {
 
     $("#bg").change(function(){
         url=window.location.href+"site_media/colors/"+$(this).val();
-        $("#text").css("background-image","url("+url+")");
+        $("#text_input").css("background-image","url("+url+")");
         
     });
 

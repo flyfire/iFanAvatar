@@ -44,7 +44,7 @@ body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-se
     #c06{background:#666666;}
     #c02{background:#222222;}
   #font_select{margin-left:59px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;}
-  #color_picker{margin-left:23px;}
+  .color_picker{margin-left:23px;}
   #opt_adv_ul{margin:6px 0 0 23px;}
   #opt_adv_ul li{display:inline;margin-left:3px;}
   #btn_gen{cursor:pointer;width:178px;height:62px;background:transparent url(../images/btn_generate.png) left top no-repeat;}

@@ -2,11 +2,19 @@
 # encoding: utf-8
 from django.http import HttpResponse
 from django.template.loader import get_template
+from django.template import Template, Context
 from django.shortcuts import render_to_response
-
+from fonts import fonts
 from draw import my_draw
+
 def home(request):
-    return render_to_response('index.html')
+    '''
+        html = t.render(Context({'current_date': now}))
+        return HttpResponse(html)
+    '''
+    t = get_template('index.html')
+    html = t.render(Context({'fonts':fonts}))
+    return HttpResponse(html)
 
 def generate(request):
 

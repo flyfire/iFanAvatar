@@ -54,3 +54,37 @@ body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-se
 #footer{line-height:1.5;text-shadow:0 1px 0 black;font-weight:normal}
   #footer a{font-weight:bold;color:#aaa;-webkit-transition-property:all;-webkit-transition-duration:300ms;}
     #footer a:hover{color:#fff;}
+/*rex added below*/
+@font-face {
+  font-family: "iYaHei.ttf";
+  src: url(/site_media/font/iYaHei.ttf);
+}
+
+@font-face {
+  font-family: "syhbd.ttf";
+  src: url(/site_media/font/syhbd.ttf);
+}
+
+@font-face {
+  font-family: "fzqtj.ttf";
+  src: url(/site_media/font/fzqtj.ttf);
+}
+
+@font-face {
+  font-family: "liuti.ttf";
+  src: url(/site_media/font/liuti.ttf);
+}
+@font-face {
+  font-family: "shoujin.ttf";
+  src: url(/site_media/font/shoujin.ttf);
+}
+
+@font-face {
+  font-family: "fzybksjt.ttf";
+  src: url(/site_media/font/fzybksjt.ttf);
+}
+
+@font-face {
+  font-family: "xujinglei.ttf";
+  src: url(/site_media/font/xujinglei.ttf);
+}

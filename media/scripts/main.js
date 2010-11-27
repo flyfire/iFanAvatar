@@ -47,13 +47,21 @@ $(document).ready(function() {
             }); //request ends
 
     });//submitbutton ends
-
+    /*
+    //waiting for kevin's background pics
     $("#bg").change(function(){
         url=window.location.href+"site_media/colors/"+$(this).val();
         $("#text_input").css("background-image","url("+url+")");
         
     });
-
+    */
+    
+    $("#font_select").change(function(){
+        var font=$(this).val();
+        $("#text_input").css("font-family",'"'+font+'"');
+        
+    });
+    
     $("#preset").blur(function(){
             set=$(this).val();
             if (set=='aifan')

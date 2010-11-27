@@ -44,6 +44,12 @@ $(document).ready(function() {
 
     });//submitbutton ends
 
+    $("#bg").change(function(){
+        url=window.location.href+"site_media/colors/"+$(this).val();
+        $("#text").css("background-image","url("+url+")");
+        
+    });
+
     $("#preset").blur(function(){
             set=$(this).val();
             if (set=='aifan')

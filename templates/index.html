@@ -49,10 +49,10 @@
             <div id="opt_bgcolor" class="opt">
 				<h3 class="left">背景颜色</h3>
 				<div id="bgcolors_panel" class="left">
-                	<span id="c192" class="bgcolors left">&nbsp;</span>
+                    <span id="c192" class="bgcolors left">&nbsp;</span>
                     <span id="c12" class="bgcolors left">&nbsp;</span>
                     <span id="c36" class="bgcolors left">&nbsp;</span>
-                    <span id="c62" class="bgcolors left">&nbsp;</span>
+                    <span id="c52" class="bgcolors left">&nbsp;</span>
                     <span id="c76" class="bgcolors left">&nbsp;</span>
                     <span id="c100" class="bgcolors left">&nbsp;</span>
                     <span id="c154" class="bgcolors left">&nbsp;</span>
@@ -63,31 +63,23 @@
                     <span id="c288" class="bgcolors left">&nbsp;</span>
                     <span id="c312" class="bgcolors left">&nbsp;</span>
                     <span id="c336" class="bgcolors left">&nbsp;</span>
-                    <span id="c06" class="bgcolors left">&nbsp;</span>
-                    <span id="c02" class="bgcolors left">&nbsp;</span>
+                    <span id="c336a" class="bgcolors left">&nbsp;</span>
+                    <span id="c0a" class="bgcolors left">&nbsp;</span>
+                    <span id="cx50" class="bgcolors left">&nbsp;</span>
+                    <span id="cx10" class="bgcolors left">&nbsp;</span>
                 </div>
 				</div>
 			<div id="opt_font" class="opt">
 				<h3 class="left">字体</h3>
 				<select name="font_select" id="font_select">
-				{% for filename, fontname in fonts.items %}
-					{% ifequal filename 'iYaHei.ttf' %}
-					    <option value={{ filename }} selected>{{ fontname }}</option>
-					{% else %}
-					    <option value={{ filename }}>{{ fontname }}</option>
-					{% endifequal %}
-				{% endfor %}
-				</select>
-				<!--
-				
 				<option value="iYaHei.ttf" selected>微软雅黑</option>
 				<option value="#">微软正黑体</option>
 				<option value="fzqtj.ttf">方正启体简</option>
 				<option value="liuti.ttf">方正柳体简</option>				
 				<option value="shoujin.ttf">方正瘦金体</option>
 				<option value="fzybksjt.ttf">方正硬楷简</option>
-				<option value="xujinglei.ttf">方正徐静蕾</option> -->				
-                
+				<option value="xujinglei.ttf">方正徐静蕾</option>				
+                </select>
 			</div>
 			<div id="opt_color" class="opt">
 				<h3 class="left">文字颜色</h3>

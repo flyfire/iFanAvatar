@@ -74,9 +74,9 @@
 				<select name="font_select" id="font_select">
 					{% for filename, fontname in fonts.items %}
 						{% ifequal filename 'iYaHei.ttf' %}
-						    <option value={{ filename }} selected>{{ fontname }}</option>
+						    <option value="{{ filename }}" selected>{{ fontname }}</option>
 						{% else %}
-						    <option value={{ filename }}>{{ fontname }}</option>
+						    <option value="{{ filename }}">{{ fontname }}</option>
 						{% endifequal %}
 					{% endfor %}
                 </select>

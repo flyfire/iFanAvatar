@@ -64,8 +64,8 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
 }
 
 @font-face {
-  font-family: "syhbd.ttf";
-  src: url(/site_media/font/syhbd.ttf);
+  font-family: "msyhbd.ttf";
+  src: url(/site_media/font/msyhbd.ttf);
 }
 
 @font-face {
@@ -90,4 +90,4 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
 @font-face {
   font-family: "xujinglei.ttf";
   src: url(/site_media/font/xujinglei.ttf);
-}
+} 

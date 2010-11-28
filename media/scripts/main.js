@@ -17,9 +17,9 @@ $(document).ready(function() {
     function getArgs()
     {
         var bg=$("#bg").val();  
-        if (!bg)
+        if (!bg || bg=='undefined')
         {
-            br="logo192.png";
+            bg="logo192.png";
         }   
         var text=$("#text_input").val();
         var textColor=$("#textColor").val();
@@ -60,7 +60,7 @@ $(document).ready(function() {
     
     $("#font_select").change(function(){
         var font=$(this).val();
-        $("#text_input").css("font-family",'"'+font+'"');
+        $("#text_input").css("font-family","'"+font+"'");
         
     });
     

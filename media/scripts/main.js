@@ -16,11 +16,15 @@ $(document).ready(function() {
     //get auguments 
     function getArgs()
     {
-        var bg=$("#bg").val();     
+        var bg=$("#bg").val();  
+        if (!bg)
+        {
+            br="logo192.png";
+        }   
         var text=$("#text_input").val();
         var textColor=$("#textColor").val();
         var shadowColor=$("#shadowColor").val();
-        var font=$("#font").val();
+        var font=$("#font_select").val();
         var border=getCheckedStatus("#border");
         var shadow=getCheckedStatus("#shadow");
         var highlight=getCheckedStatus("#highlight"); 

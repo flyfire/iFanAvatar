@@ -72,13 +72,13 @@
 			<div id="opt_font" class="opt">
 				<h3 class="left">字体</h3>
 				<select name="font_select" id="font_select">
-				<option value="iYaHei.ttf" selected>微软雅黑</option>
-				<option value="#">微软正黑体</option>
-				<option value="fzqtj.ttf">方正启体简</option>
-				<option value="liuti.ttf">方正柳体简</option>				
-				<option value="shoujin.ttf">方正瘦金体</option>
-				<option value="fzybksjt.ttf">方正硬楷简</option>
-				<option value="xujinglei.ttf">方正徐静蕾</option>				
+					{% for filename, fontname in fonts.items %}
+						{% ifequal filename 'iYaHei.ttf' %}
+						    <option value={{ filename }} selected>{{ fontname }}</option>
+						{% else %}
+						    <option value={{ filename }}>{{ fontname }}</option>
+						{% endifequal %}
+					{% endfor %}
                 </select>
 			</div>
 			<div id="opt_color" class="opt">

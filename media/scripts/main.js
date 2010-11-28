@@ -40,11 +40,9 @@ $(document).ready(function() {
     $('#btn_gen').click(function(){
     	
     	x=getArgs();
-    	alert(x.bg+"\n"+x.text+x.textColor+x.shadowColor+x.font+x.border+x.shadow+x.highlight);
-    	
-        $.get('/gen', getArgs(),function(data) {
+    	$.get('/gen', getArgs(),function(data) {
             $("#pic_output").html(data);
-            }); //request ends
+        }); //request ends
 
     });//submitbutton ends
     /*

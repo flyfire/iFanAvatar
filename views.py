@@ -19,6 +19,8 @@ def home(request):
 def generate(request):
 
     bg = request.GET.get('bg', '')  #can be changed to POST
+    if not bg or bg=='undefined':
+        bg='logo192.png'
     text=request.GET.get('text', '')
     font=request.GET.get('font', '')
     textColor=request.GET.get('textColor', '')

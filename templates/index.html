@@ -41,13 +41,14 @@
             </div>
             <div id="opt_text_input" class="opt left">
 				<h3>输入要生成的文字</h3>
-				<textarea id="text_input" class="left">饭</textarea>
+                <input maxlength="1" tabindex="1" id="text_input" class="left" value="饭"/>
 				<span class="hint left" style="margin:22px 0 0 10px;">本窗格有简单预览效果<br />支持单个汉字或全角英文字符</span>
             </div>
             <div class="clear"></div>
             <div class="hr"></div>
             <div id="opt_bgcolor" class="opt">
 				<h3 class="left">背景颜色</h3>
+                <input type="hidden" id="bg" value="rgb(0, 163, 204)"/><!--TODO: return the color hex not the rbg-->
 				<div id="bgcolors_panel" class="left">
                     <span id="c192" class="bgcolors left">&nbsp;</span>
                     <span id="c12" class="bgcolors left">&nbsp;</span>
@@ -90,6 +91,12 @@
 				<input name="color_picker" class="color_picker" id="shadowColor" type="text" value="#000000" />
 			</div>
             <script type="text/javascript" charset="utf-8"> 
+                
+                $('.bgcolors').click(function() {
+                    var bgColor = $(this).css('background-color');
+                    $("#bg").val(bgColor);
+                    $("#text_input").css('background-color', bgColor);
+                });
                             $('#textColor, #shadowColor').ColorPicker({
 								onChange: function(hsb, hex, rgb, el) {
 									function getCheckedStatus(checkboxID)

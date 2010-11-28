@@ -16,10 +16,19 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
 #content{position:relative;width:808px;height:359px;background:transparent url(../images/block.png) no-repeat;margin-bottom:20px;padding:15px 20px;}
   h3{color:#fff;font-weight:normal;font-size:18px;text-shadow:0 1px 0 black;}
   h4{color:#fff;font-weight:normal;font-size:14px;text-shadow:0 1px 0 black;}
-  textarea{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;overflow:hidden;border:3px solid #222;-webkit-transition-property:border;-webkit-transition-duration:300ms;}
+  /*textarea{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;overflow:hidden;border:3px solid #222;-webkit-transition-property:border;-webkit-transition-duration:300ms;}*/
   input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;overflow:hidden;}
     #text_input{color:#fff;background:rgba(0,204,255,1);text-shadow:0 0 3px rgba(0,0,0,.5);text-align:center;margin:10px 0 0 0;padding:6px;font-size:28px;line-height:28px;height:30px;width:30px;}
-  textarea:hover,textarea:focus{border:3px solid #fff;}
+    #text_input {
+        overflow:hidden;
+        border:3px solid #222;
+        -webkit-transition-property:border;
+        -webkit-transition-duration:300ms;
+    }
+    #text_input:hover, #text_input:focus {
+        border:3px solid #fff;
+    }
+  /*textarea:hover,textarea:focus{border:3px solid #fff;}*/
   #opt_templates{width:100px;}
   #opt_text_input{margin-bottom:15px;}
   #opt_bgcolor{margin-top:15px;height:36px;}

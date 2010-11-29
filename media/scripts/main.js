@@ -90,6 +90,12 @@ $(document).ready(function() {
             }
             
         });
+        
+        $('.bgcolors').click(function() {
+            var bgColor = $(this).css('background-color');
+                $("#bg").val(bgColor);
+                $("#text_input").css('background-color', bgColor);
+        });
 
 });//document ready ends
 

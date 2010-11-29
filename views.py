@@ -1,11 +1,27 @@
 #!/usr/bin/env python
 # encoding: utf-8
+
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.template import Template, Context
 from django.shortcuts import render_to_response
-from fonts import fonts
+from fontdict import fontdict
 from draw import my_draw
+
+def fontcss():
+    format='''
+/****           %s           ****/ 
+@font-face {
+  font-family: "%s";
+  src: url(/site_media/font/%s);
+}'''
+    css=''
+    for font in fontdict.keys():
+        css += format % (fontdict[font], font, font)
+    return css
+#    response = HttpResponse(mimetype='text/plain; charset=utf-8')
+#    response.write(css)
+#    return response 
 
 def home(request):
     '''
@@ -13,7 +29,7 @@ def home(request):
         return HttpResponse(html)
     '''
     t = get_template('index.html')
-    html = t.render(Context({'fonts':fonts}))
+    html = t.render(Context({'fontdict':fontdict, 'fontcss': fontcss()}))
     return HttpResponse(html)
 
 def generate(request):

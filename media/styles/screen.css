@@ -58,6 +58,7 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
   #footer a{font-weight:bold;color:#aaa;-webkit-transition-property:all;-webkit-transition-duration:300ms;}
     #footer a:hover{color:#fff;}
 /*rex added below*/
+/*  
 @font-face {
   font-family: "iYaHei.ttf";
   src: url(/site_media/font/iYaHei.ttf);
@@ -90,4 +91,6 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
 @font-face {
   font-family: "xujinglei.ttf";
   src: url(/site_media/font/xujinglei.ttf);
-} 
+}
+
+*/

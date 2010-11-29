@@ -6,9 +6,25 @@
 	<meta http-equiv="Content-Language" content="cs" />
 	<meta name="description" content="iFan-style Avatar Generator" />
 	<meta name="keywords" content="ifan,avatar,generator,tool,爱饭,头像,生成" />
+
 	<title>爱饭样式头像生成器</title>
+
 	<link rel="stylesheet" href="site_media/styles/screen.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="fontcss?type=.css" type="text/css" media="screen" /> 
 	<link rel="icon" href="site_media/favicon.ico" type="image/gif" />
+
+    <!-- font css generaged -->
+        <style type="text/css" media="screen"> 
+            {% for filename, fontname in fontdict.items %}
+            /****           {{ fontname }}           ****/ 
+            @font-face {
+            font-family: "{{ filename }}";
+                src: url(/site_media/font/{{ filename }});
+            }   
+            {% endfor %}
+        </style> 
+    <!--font css end -->
+
 	<script type="text/javascript" src="site_media/scripts/jquery.js"></script>
 	<!-- 爱饭样式头像生成器 2.0 版本 1.0.0.4 -->
 
@@ -72,7 +88,7 @@
 			<div id="opt_font" class="opt">
 				<h3 class="left">字体</h3>
 				<select name="font_select" id="font_select">
-					{% for filename, fontname in fonts.items %}
+					{% for filename, fontname in fontdict.items %}
 						{% ifequal filename 'iYaHei.ttf' %}
 						    <option value="{{ filename }}" selected>{{ fontname }}</option>
 						{% else %}

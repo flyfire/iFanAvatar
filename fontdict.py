@@ -5,7 +5,7 @@
 #font english name
 #font chinese name
 
-fonts={
+fontdict={
     "iYaHei.ttf":"微软雅黑",
     "msyhbd.ttf":"微软正黑体",
     "fzqtj.ttf":"方正启体简",
@@ -13,6 +13,6 @@ fonts={
     "shoujin.ttf":"方正瘦金体",
     "fzybksjt.ttf":"方正硬楷简",
     "xujinglei.ttf":"方正徐静蕾",
-    "wqy-microhei.ttc":"Wenquanyi",
+    "wqy-microhei.ttc":"文泉驿微米黑",
 }
 

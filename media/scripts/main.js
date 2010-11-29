@@ -1,5 +1,25 @@
 $(document).ready(function() { 
 
+    function getImageArgs()
+    {
+        var border=getCheckedStatus("#border");
+        var highlight=getCheckedStatus("#highlight");
+        var status="";
+        if (highlight=='True')
+        {
+            status+="h";
+        }
+        if (border=='True')
+        {
+            status+="b";
+        }
+        if (status)
+        {
+            status="_"+status;
+        }
+        return status; 
+    }
+    
     function getCheckedStatus(checkboxID)
     {
         //return 1 if checked, or 0 
@@ -98,6 +118,12 @@ $(document).ready(function() {
             var bgColor = $(this).css('background-color');
                 var pic="url(/site_media/colors/"+$(this).attr('id')+".png)"; 
                 $("#text_input").css('background-image', pic);
+        });
+        $("#border, #highlight").click(function(){
+            var status=getImageArgs();
+            var img=$("#text_input").css('background-image');
+            img=img.replace(/c(\d+).*?\.png/, "c$1"+status+".png"); 
+            $("#text_input").css('background-image', img);
         });
 
 });//document ready ends

@@ -16,11 +16,14 @@ $(document).ready(function() {
     //get auguments 
     function getArgs()
     {
-        var bg=$("#bg").val();  
-        if (!bg || bg=='undefined')
+        var bg=$("#text_input").css('background-image');
+        //url("http://127.0.0.1:8000/site_media/colors/c36.png")
+        if (!bg || bg=='undefined' || bg=='none')
         {
-            bg="logo192.png";
+            bg="c192_hb.png";
         }   
+        bg=bg.replace(/^.*?(\w+\.png).*?$/,"$1");
+
         var text=$("#text_input").val();
         var textColor=$("#textColor").val();
         var shadowColor=$("#shadowColor").val();
@@ -93,8 +96,8 @@ $(document).ready(function() {
         
         $('.bgcolors').click(function() {
             var bgColor = $(this).css('background-color');
-                $("#bg").val(bgColor);
-                $("#text_input").css('background-color', bgColor);
+                var pic="url(/site_media/colors/"+$(this).attr('id')+".png)"; 
+                $("#text_input").css('background-image', pic);
         });
 
 });//document ready ends

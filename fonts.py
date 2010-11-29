@@ -13,5 +13,6 @@ fonts={
     "shoujin.ttf":"方正瘦金体",
     "fzybksjt.ttf":"方正硬楷简",
     "xujinglei.ttf":"方正徐静蕾",
+    "wqy-microhei.ttc":"Wenquanyi",
 }
 

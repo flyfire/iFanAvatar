@@ -114,17 +114,27 @@ $(document).ready(function() {
             
         });
         
+    /**
+     * TODO:
+     * 1. get the .bgcolors background-color property
+     * 2. change the #text_input background color to the result above
+     * 3. handle the border and highlight
+     */
         $('.bgcolors').click(function() {
             var bgColor = $(this).css('background-color');
-                var pic="url(/site_media/colors/"+$(this).attr('id')+".png)"; 
-                $("#text_input").css('background-image', pic);
+            $('#text_input').css('background-color', bgColor);
         });
-        $("#border, #highlight").click(function(){
-            var status=getImageArgs();
-            var img=$("#text_input").css('background-image');
-            img=img.replace(/c(\d+).*?\.png/, "c$1"+status+".png"); 
-            $("#text_input").css('background-image', img);
+
+        $('#highlight').click(function() {
+            $('#text_input').toggleClass('sprite');
+            //FIXME: need to sync to the checkbox
         });
+        //$("#border, #highlight").click(function(){
+        //    var status=getImageArgs();
+        //    var img=$("#text_input").css('background-image');
+        //    img=img.replace(/c(\d+).*?\.png/, "c$1"+status+".png"); 
+        //    $("#text_input").css('background-image', img);
+        //});
 
 });//document ready ends
 

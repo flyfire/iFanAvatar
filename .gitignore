@@ -1,0 +1,3 @@
+#following files will not be tracked
+*.pyc
+font/

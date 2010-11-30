@@ -36,13 +36,20 @@ $(document).ready(function() {
     //get auguments 
     function getArgs()
     {
-        var bg=$("#text_input").css('background-image');
-        //url("http://127.0.0.1:8000/site_media/colors/c36.png")
-        if (!bg || bg=='undefined' || bg=='none')
-        {
-            bg="c192_hb.png";
-        }   
-        bg=bg.replace(/^.*?(\w+\.png).*?$/,"$1");
+        var bg = $("#bg").val();
+
+        var bg_h = $("#highlight").attr("checked");
+        var bg_b = $("#border").attr("checked");
+
+        if (!(bg_h || bg_b)) {
+            bg += '.png';
+        } else if(!bg_h &&  bg_b) {
+            bg += '_b.png';
+        } else if(bg_h && !bg_b) {
+            bg += '_h.png';
+        } else if(bg_h && bg_b) {
+            bg += '_hb.png';
+        }
 
         var text=$("#text_input").val();
         var textColor=$("#textColor").val();
@@ -114,20 +121,14 @@ $(document).ready(function() {
             
         });
         
-    /**
-     * TODO:
-     * 1. get the .bgcolors background-color property
-     * 2. change the #text_input background color to the result above
-     * 3. handle the border and highlight
-     */
         $('.bgcolors').click(function() {
             var bgColor = $(this).css('background-color');
+            $("#bg").val($(this).attr('id'));
             $('#text_input').css('background-color', bgColor);
         });
 
         $('#highlight').click(function() {
             $('#text_input').toggleClass('sprite');
-            //FIXME: need to sync to the checkbox
         });
         //$("#border, #highlight").click(function(){
         //    var status=getImageArgs();

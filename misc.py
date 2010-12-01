@@ -12,7 +12,7 @@ import commands
 def getVersionInfor():
     cmd="git tag |sort -r |head -1"
     version=commands.getoutput(cmd)
-    cmd='''git log -1 |grep -oP "(?<=commit )\w+"'''
+    cmd='''git log -1 |grep  commit |grep -o "\<[a-f0-9]\+\>"'''
     build=commands.getoutput(cmd)
     return (version, build)
     

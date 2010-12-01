@@ -98,7 +98,8 @@ $(document).ready(function() {
             set=$(this).val();
             if (set=='aifan')
             {
-                $("#textColor").val("#00AAFF");
+                $("#font_select").val("iYaHei.ttf"); 
+                $("#textColor").val("#FFFFFF");
                 $("#bg").val("logo192.png");
                 $('#border').attr('checked','checked');
                 $('#shadow').attr('checked','checked');
@@ -106,11 +107,12 @@ $(document).ready(function() {
             }
             else if (set == 'fanfou')
             {
-                $("#textColor").val("#00CCFF"); 
-                $("#bg").val("logo172.png"); 
+                $("#font_select").val("msjhbd.ttf");
+                $("#textColor").val("#FFFFFF");
+                $("#bg").val("logo172.png");
                 $('#border').removeAttr('checked');
                 $('#shadow').removeAttr('checked');
-                $('#highlight').removeAttr('checked'); 
+                $('#highlight').removeAttr('checked');
             } 
             else
             {

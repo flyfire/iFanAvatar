@@ -7,7 +7,7 @@
 
 fontdict={
     "iYaHei.ttf":"微软雅黑",
-    "msyh.ttf":"微软正黑体",
+    "msjhbd.ttf":"微软正黑体粗体",
     "fzqtj.ttf":"方正启体简",
     "liuti.ttf":"方正柳体简",				
     "shoujin.ttf":"方正瘦金体",

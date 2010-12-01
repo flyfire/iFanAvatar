@@ -76,9 +76,22 @@ $(document).ready(function() {
     	x=getArgs();
     	$.get('/gen', getArgs(),function(data) {
             $("#pic_output").html(data);
+            //add img url to history:
+            var history=$("#history").html();
+            history += "<img class='history' src='"+data"' width='100' />";
+            $("#history").html(history);
         }); //request ends
 
     });//submitbutton ends
+    
+    //display history
+    
+    $('.history').click(function(){
+    	var history=$(this).attr('src');
+    	$("#pic_output").html(history);
+    });//display history ends
+    
+    
     /*
     //waiting for kevin's background pics
     $("#bg").change(function(){

@@ -7,8 +7,10 @@ from django.template import Template, Context
 from django.shortcuts import render_to_response
 from fontdict import fontdict
 from draw import my_draw
+from misc import getVersionInfor
 
 def fontcss():
+    '''generate css for fonts; '''
     format='''
 /****           %s           ****/ 
 @font-face {
@@ -24,12 +26,15 @@ def fontcss():
 #    return response 
 
 def home(request):
-    '''
-        html = t.render(Context({'current_date': now}))
-        return HttpResponse(html)
-    '''
+    '''index view'''
+    
+    version,build = getVersionInfor()
     t = get_template('index.html')
-    html = t.render(Context({'fontdict':fontdict, 'fontcss': fontcss()}))
+    
+    html = t.render(Context({'fontdict':fontdict,
+        'fontcss': fontcss(),
+        "version":  version,
+        "build":    build}))
     return HttpResponse(html)
 
 def generate(request):

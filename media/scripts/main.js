@@ -41,6 +41,7 @@ $(document).ready(function() {
         var bg_h = $("#highlight").attr("checked");
         var bg_b = $("#border").attr("checked");
 
+        bg=bg.replace(/[_bh]{0,3}\.png$/, '');
         if (!(bg_h || bg_b)) {
             bg += '.png';
         } else if(!bg_h &&  bg_b) {

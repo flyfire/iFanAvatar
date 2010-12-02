@@ -47,16 +47,22 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
 
     #generate new pic only when not existing
 
-    if not os.path.exists(filename):
-        image_a=Image.open(findPath('colors/bg.png'))
+    if 1 :#not os.path.exists(filename):
+        image_a=Image.open(findPath("colors/%s" % bg))
         image_b=Image.open(findPath("colors/%s" % bg))
         font=ImageFont.truetype(pFont, fontSize)
-        font2=ImageFont.truetype(pFont,fontSize+5)
-        box=(0,0,190,190)
-        position=(5,5,195,195)
+        width=180
+        height=180
+        box=(10,10,width+10, height+10)
+        side=10
+        position=(0+side,0+side, width+side, height+side)
 
         img_draw=ImageDraw.Draw(image_b)
-        img_draw.text(textPosition,text,font=font,fill=shadowColor)
+
+        if shadow:
+            img_draw.text(textPosition,text,font=font,fill=shadowColor)
+        else:
+            img_draw.text(textPosition,text,font=font)
         imgfilted=image_b.filter(ImageFilter.BLUR)
 
         img_draw=ImageDraw.Draw(image_a)

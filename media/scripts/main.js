@@ -72,12 +72,12 @@ $(document).ready(function() {
     }
 
     $('#btn_gen').click(function(){ 
-
+        $("#pic_output").html("<img src='/site_media/images/loading.gif' />");
     	$.get('/gen', getArgs(),function(data) {
             $("#pic_output").html(data);
             //add img url to history:
             var history=$("#history").html();
-            if (history.search(data)==-1)
+            if (history.search(data)==-1 && data.search("loading.gif")==-1)
             {
                 if (history.split("img").length <=5 )
                 {
@@ -85,7 +85,10 @@ $(document).ready(function() {
                 }
             }
         }); //request ends
-
+        if  ($("#pic_output").html().search("loading.gif") != -1)
+        {
+            $("#pic_output").html("");
+        }
     });//submitbutton ends
     
     //display history

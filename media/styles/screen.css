@@ -17,10 +17,9 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
 #content{position:relative;width:808px;height:359px;background:transparent url(../images/block.png) no-repeat;margin-bottom:20px;padding:15px 20px;}
   h3{color:#fff;font-weight:normal;font-size:18px;text-shadow:0 1px 0 black;}
   h4{color:#fff;font-weight:normal;font-size:14px;text-shadow:0 1px 0 black;}
-  input {font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;overflow:hidden;border:3px solid #222;-webkit-transition-property:border;-webkit-transition-duration:300ms;}
   input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;overflow:hidden;}
-    #text_input{color:#fff;background:rgba(0,204,255,1);text-shadow:0 0 3px rgba(0,0,0,.5);text-align:center;margin:10px 0 0 0;padding:6px;font-size:54px;line-height:54px;height:64px;width:64px;}
-  input:hover, input:focus{border:3px solid #fff;}
+    #text_input{color:#fff;background-color:#00A3CC;text-shadow:0 0 3px rgba(0,0,0,1);text-align:center;margin:10px 0 0 0;padding:6px;font-size:54px;line-height:54px;height:64px;width:64px;border:3px solid #222;-webkit-transition-property:border,background-color;-webkit-transition-duration:300ms;}
+  #text_input:hover,#text_input:focus{border:3px solid #fff;}
   #opt_templates{width:100px;}
   #opt_text_input{margin-bottom:15px;}
   #opt_bgcolor{margin-top:15px;height:36px;}
@@ -49,14 +48,16 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
     #cx50{background:#808080;}
     #cx10{background:#1a1a1a;}
   #font_select{margin-left:59px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;}
-  .color_picker{margin-left:20px;}
+  .color_picker{width:60px;margin-left:23px;}
   #opt_adv_ul{margin:6px 0 0 23px;}
   #opt_adv_ul li{display:inline;margin-left:3px;}
   #btn_gen {cursor:pointer;width:178px;height:62px;background:transparent url('../images/nbg.png') no-repeat 0px -246px ;}
   #btn_gen:hover {background:transparent url('../images/nbg.png') no-repeat 0px -308px;}
   #pic_output{position:absolute;right:20px;top:20px;z-index:60000;}
+  #history{position:absolute;right:20px;top:260px;z-index:50000;}
+  #history img{width:80px;height:80px;margin:10px 0 0 5px;}
   .hr{height:2px;width:539px;background:transparent url(../images/hr.gif) no-repeat;}
-#footer{line-height:1.5;text-shadow:0 1px 0 black;font-weight:normal}
+#footer{margin-bottom:20px;line-height:1.5;text-shadow:0 1px 0 black;font-weight:normal}
   #footer a{font-weight:bold;color:#aaa;-webkit-transition-property:all;-webkit-transition-duration:300ms;}
     #footer a:hover{color:#fff;}
 

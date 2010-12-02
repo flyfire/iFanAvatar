@@ -88,23 +88,6 @@ $(document).ready(function() {
         
     });//submitbutton ends
     
-    //display history
-    
-    $('.history').click(function(){
-    	var history=$(this).attr('src');
-    	$("#pic_output").html(history);
-    });//display history ends
-    
-    
-    /*
-    //waiting for kevin's background pics
-    $("#bg").change(function(){
-        url=window.location.href+"site_media/colors/"+$(this).val();
-        $("#text_input").css("background-image","url("+url+")");
-        
-    });
-    */
-    
     $("#font_select").change(function(){
         var font=$(this).val();
         $("#text_input").css("font-family","'"+font+"'");

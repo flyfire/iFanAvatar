@@ -71,15 +71,19 @@ $(document).ready(function() {
         };
     }
 
-    $('#btn_gen').click(function(){
-    	
-    	x=getArgs();
+    $('#btn_gen').click(function(){ 
+
     	$.get('/gen', getArgs(),function(data) {
             $("#pic_output").html(data);
             //add img url to history:
             var history=$("#history").html();
-            history += "<img class='history' src='"+data"' width='100' />";
-            $("#history").html(history);
+            if (history.search(data)==-1)
+            {
+                if (history.split("img").length <=5 )
+                {
+                    $("#history").html(history+data);
+                }
+            }
         }); //request ends
 
     });//submitbutton ends

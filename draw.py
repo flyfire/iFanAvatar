@@ -35,7 +35,7 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
     """draw avatar. Core part of the program."""
 
     pure=md5(text+bg+font+textColor+shadowColor+str(border)+str(shadow)+str(highlight)).hexdigest()+".png" 
-    filename=findPath('media/')+pure 
+    filename=findPath('media/result/')+pure 
     pFont=fontFile(font)
 
     if 'liuti' in pFont or 'fzqtj' in pFont: 
@@ -69,5 +69,5 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
 
     #display the picture;
     #img tag is enough, for this is displayed in pic_output div.
-    html="""<img src="./site_media/%s">""" % (pure)
+    html="""<img src="./site_media/result/%s">""" % (pure)
     return HttpResponse(html)

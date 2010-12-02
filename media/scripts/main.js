@@ -85,10 +85,7 @@ $(document).ready(function() {
                 }
             }
         }); //request ends
-        if  ($("#pic_output").html().search("loading.gif") != -1)
-        {
-            $("#pic_output").html("");
-        }
+        
     });//submitbutton ends
     
     //display history

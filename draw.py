@@ -69,5 +69,5 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
 
     #display the picture;
     #img tag is enough, for this is displayed in pic_output div.
-    html="""<img src="./site_media/result/%s">""" % (pure)
+    html="""<img class="avatars" src="./site_media/result/%s">""" % (pure)
     return HttpResponse(html)

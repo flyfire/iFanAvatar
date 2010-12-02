@@ -57,8 +57,8 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
     #output_link{background-color:rgba(0,0,0,.7);color:#fff;font-size:14px;padding:10px 0;position:absolute;right:0;top:160px;width:200px;text-align:center;opacity:0;text-shadow:0 1px 0 rgba(0,0,0,.7);-webkit-transition-property:opacity;-webkit-transition-duration:300ms;}
     #output_link a{color:#fff;text-decoration:none;}
     #pic_output:hover #output_link{opacity:1;}
-  #history{position:absolute;right:20px;top:276px;z-index:50000;}
-  #history img{width:80px;height:80px;margin:10px 0 0 5px;}
+  #history{ overflow:hidden;position:absolute;right:20px;top:216px;width:200px; height:50px;z-index:50000;}
+  #history img{width:35px;height:35px;margin:10px 0 0 5px;}
   .hr{height:2px;width:539px;background:transparent url(../images/hr.gif) no-repeat;}
 #footer{margin-bottom:20px;line-height:1.5;text-shadow:0 1px 0 black;font-weight:normal}
   #footer a{font-weight:bold;color:#aaa;-webkit-transition-property:all;-webkit-transition-duration:300ms;}

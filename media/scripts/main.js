@@ -36,21 +36,7 @@ $(document).ready(function() {
     //get auguments 
     function getArgs()
     {
-        var bg = $("#bg").val();
-
-        var bg_h = $("#highlight").attr("checked");
-        var bg_b = $("#border").attr("checked");
-
-        if (!(bg_h || bg_b)) {
-            bg += '.png';
-        } else if(!bg_h &&  bg_b) {
-            bg += '_b.png';
-        } else if(bg_h && !bg_b) {
-            bg += '_h.png';
-        } else if(bg_h && bg_b) {
-            bg += '_hb.png';
-        }
-
+        var bg = $("#bg").val() + getImageArgs($(this)) + ".png";
         var text=$("#text_input").val();
         var textColor=$("#textColor").val();
         var shadowColor=$("#shadowColor").val();
@@ -72,29 +58,23 @@ $(document).ready(function() {
     }
 
     $('#btn_gen').click(function(){ 
-        $("#pic_output").html("<img src='/site_media/images/loading.gif' />");
+        $("#pic_output").html('<img src="/site_media/images/loading.gif" />');
     	$.get('/gen', getArgs(),function(data) {
             $("#pic_output").html(data);
             //add img url to history:
             var history=$("#history").html();
             if (history.search(data)==-1 && data.search("loading.gif")==-1)
             {
-                if (history.split("img").length <=5 )
-                {
-                    $("#history").html(history+data);
+                if (history.split("img").length > 5 ) {
+                    $("#history>img:first").remove();
                 }
+                $("#history").append(data);
             }
         }); //request ends
         
     });//submitbutton ends
-    
-    //display history
-    
-    $('.history').click(function(){
-    	var history=$(this).attr('src');
-    	$("#pic_output").html(history);
-    });//display history ends
-    
+
+    //TODO: click #history>.avatars to change the picture in #pic_output
     
     /*
     //waiting for kevin's background pics
@@ -157,4 +137,3 @@ $(document).ready(function() {
         //});
 
 });//document ready ends
-

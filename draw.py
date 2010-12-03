@@ -37,13 +37,26 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
     pure=md5(text+bg+font+textColor+shadowColor+str(border)+str(shadow)+str(highlight)).hexdigest()+".png" 
     filename=findPath('media/result/')+pure 
     pFont=fontFile(font)
-
-    if 'liuti' in pFont or 'fzqtj' in pFont: 
-        textPosition=(15, 15)
-        fontSize=170
-    else:   #for yahei
-        textPosition=(20, -5)
+    if pFont.find("wqy")!=-1: #for wenquanyi
+        textPosition=(25, 15)
         fontSize=150 
+    elif pFont.find("xujinglei")!=-1: #for xujinglei
+        textPosition=(10, 10)
+        fontSize=170 
+    elif  pFont.find("YaHei") !=-1: 
+        textPosition=(25, 0)
+        fontSize=140
+    elif pFont.find("fzybksjt") !=-1: #fang zheng ying kai jian
+        textPosition=(15, 15)
+        fontSize=160 
+    elif pFont.find("fzqtj") !=-1: #fang zheng ying kai jian
+        textPosition=(15, 15)
+        fontSize=160 
+    elif pFont.find("shoujin") !=-1: #fang zheng ying kai jian
+        textPosition=(18, 18)
+        fontSize=155 
+
+
 
     #generate new pic only when not existing
 

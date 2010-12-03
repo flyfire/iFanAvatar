@@ -56,8 +56,6 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
         textPosition=(18, 18)
         fontSize=155 
 
-
-
     #generate new pic only when not existing
 
     if 1 :#not os.path.exists(filename):
@@ -81,10 +79,10 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
             region=imgfilted.crop(box)
             img_draw=ImageDraw.Draw(image_a) 
             image_a.paste(region,position)
-            img_draw.text(textPosition,text,font=font,fill=textColor) 
+            img_draw.text(textPosition,text,font=font, fill=textColor) 
             image_a.save(filename)
         else:
-            img_draw.text(textPosition,text,font=font) 
+            img_draw.text(textPosition,text,font=font, fill=textColor) 
             image_b.save(filename)
     
     html="""<img src="./site_media/result/%s">""" % (pure)

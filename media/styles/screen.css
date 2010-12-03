@@ -50,10 +50,10 @@ input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:
 #font_select{margin-left:59px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;}
 .color_picker{width:60px;margin-left:23px;}
 #opt_adv_ul{margin:6px 0 0 23px;}
-#opt_adv_ul li{display:inline;margin-left:3px;}
+#opt_adv_ul li{color:#fff;display:inline;margin-left:3px;}
 #btn_gen {cursor:pointer;width:178px;height:62px;background:transparent url('../images/nbg.png') no-repeat 0px -246px ;}
 #btn_gen:hover {background:transparent url('../images/nbg.png') no-repeat 0px -308px;}
-#pic_output{position:absolute;right:20px;top:20px;z-index:60000;}
+#pic_output{position:absolute;right:20px;top:20px;}
 #output_link{background-color:rgba(0,0,0,.7);color:#fff;font-size:14px;padding:10px 0;position:absolute;right:0;top:160px;width:200px;text-align:center;opacity:0;text-shadow:0 1px 0 rgba(0,0,0,.7);-webkit-transition-property:opacity;-webkit-transition-duration:300ms;}
 #output_link a{color:#fff;text-decoration:none;}
 #pic_output:hover #output_link{opacity:1;}

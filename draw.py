@@ -38,7 +38,7 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
     filename=findPath('media/result/')+pure 
     pFont=fontFile(font)
     if pFont.find("wqy")!=-1: #for wenquanyi
-        textPosition=(25, 15)
+        textPosition=(20, 15)
         fontSize=150 
     elif pFont.find("xujinglei")!=-1: #for xujinglei
         textPosition=(10, 10)
@@ -55,6 +55,14 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
     elif pFont.find("shoujin") !=-1: #fang zheng ying kai jian
         textPosition=(18, 18)
         fontSize=155 
+    elif pFont.find("msjhbd") !=-1 :
+        textPosition=(18, -8)
+        fontSize=155 
+    elif pFont.find("liuti") !=-1 :
+        textPosition=(15, 15)
+        fontSize=165 
+
+
 
     #generate new pic only when not existing
 

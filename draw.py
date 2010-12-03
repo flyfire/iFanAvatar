@@ -48,32 +48,31 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
     #generate new pic only when not existing
 
     if 1 :#not os.path.exists(filename):
+        # when debugging, set if to 1, so as to gen pic each time;
+        # when done, set if to not os.path.exists(filename), and only gen new pics.
+        
         image_a=Image.open(findPath("colors/%s" % bg))
         image_b=Image.open(findPath("colors/%s" % bg))
         font=ImageFont.truetype(pFont, fontSize)
         width=180
         height=180
         box=(10,10,width+10, height+10)
-        side=10
+        side=13
         position=(0+side,0+side, width+side, height+side)
 
         img_draw=ImageDraw.Draw(image_b)
 
         if shadow:
-            img_draw.text(textPosition,text,font=font,fill=shadowColor)
+            img_draw.text(textPosition,text,font=font,fill=shadowColor) 
+            imgfilted=image_b.filter(ImageFilter.BLUR) 
+            region=imgfilted.crop(box)
+            img_draw=ImageDraw.Draw(image_a) 
+            image_a.paste(region,position)
+            img_draw.text(textPosition,text,font=font,fill=textColor) 
+            image_a.save(filename)
         else:
-            img_draw.text(textPosition,text,font=font)
-        imgfilted=image_b.filter(ImageFilter.BLUR)
-
-        img_draw=ImageDraw.Draw(image_a)
-
-        region=imgfilted.crop(box)
-        image_a.paste(region,position)
-        img_draw.text(textPosition,text,font=font,fill=textColor) 
-        
-        image_a.save(filename)
-
-    #display the picture;
-    #img tag is enough, for this is displayed in pic_output div.
+            img_draw.text(textPosition,text,font=font) 
+            image_b.save(filename)
+    
     html="""<img src="./site_media/result/%s">""" % (pure)
     return HttpResponse(html)

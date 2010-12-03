@@ -66,7 +66,7 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
 
     #generate new pic only when not existing
 
-    if 1 :#not os.path.exists(filename):
+    if not os.path.exists(filename):
         # when debugging, set if to 1, so as to gen pic each time;
         # when done, set if to not os.path.exists(filename), and only gen new pics.
         

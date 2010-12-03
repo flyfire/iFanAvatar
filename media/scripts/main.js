@@ -54,16 +54,19 @@ $(document).ready(function() {
     }
 
     $('#btn_gen').click(function() { 
-        $("#pic_output").html("<img src='/site_media/images/loading.gif' />");
+        $("#pic_output").html("<img id='loading-icon' src='/site_media/images/loading.gif' />");
         $.get('/gen', getArgs(),function(data) {
             $("#pic_output").html(data);
             //add img url to history:
             var history=$("#history").html();
             if (history.search(data) == -1 && data.search("loading.gif") == -1) {
-                if ($("#history>img").length >= 5) {
+                if ($("#history>img").length >= 10) {
                     $("#history>img:first").remove();
                 }
                 $("#history").append(data);
+                $("#history>img").click(function() {
+                    console.log($(this));
+                });
             }
         }); //request ends
 

@@ -28,20 +28,10 @@ $(document).ready(function() {
 
     //get auguments 
     function getArgs() {
-        var bg = $("#bg").val();
+        var bg = $("#bg").val() + getImageArgs($(this)) + ".png";
 
         var bg_h = $("#highlight").attr("checked");
         var bg_b = $("#border").attr("checked");
-
-        if (!(bg_h || bg_b)) {
-            bg += '.png';
-        } else if(!bg_h &&  bg_b) {
-            bg += '_b.png';
-        } else if(bg_h && !bg_b) {
-            bg += '_h.png';
-        } else if(bg_h && bg_b) {
-            bg += '_hb.png';
-        }
 
         var text=$("#text_input").val();
         var textColor=$("#textColor").val();
@@ -53,45 +43,36 @@ $(document).ready(function() {
 
         return {
             'bg':bg,
-                'text':text,
-                'textColor':textColor,
-                'shadowColor':shadowColor,
-                'font':font, 
-                'border':border,
-                'shadow':shadow,
-                'highlight':highlight,
+            'text':text,
+            'textColor':textColor,
+            'shadowColor':shadowColor,
+            'font':font, 
+            'border':border,
+            'shadow':shadow,
+            'highlight':highlight,
         };
     }
 
-    $('#btn_gen').click(function(){ 
+    $('#btn_gen').click(function() { 
         $("#pic_output").html("<img src='/site_media/images/loading.gif' />");
-    	$.get('/gen', getArgs(),function(data) {
+        $.get('/gen', getArgs(),function(data) {
             $("#pic_output").html(data);
             //add img url to history:
             var history=$("#history").html();
-            if (history.search(data)==-1 && data.search("loading.gif")==-1)
-            {
-                if (history.split("img").length <=5 )
-                {
-                    $("#history").html(history+data);
+            if (history.search(data) == -1 && data.search("loading.gif") == -1) {
+                if ($("#history>img").length >= 5) {
+                    $("#history>img:first").remove();
                 }
+                $("#history").append(data);
             }
         }); //request ends
-        
-    });//submitbutton ends
-    
-    /*
-    //waiting for kevin's background pics
-    $("#bg").change(function(){
-    url=window.location.href+"site_media/colors/"+$(this).val();
-    $("#text_input").css("background-image","url("+url+")");
 
-    });
-    */
+    });//submitbutton ends
 
     $("#font_select").change(function() {
         var font=$(this).val();
         $("#text_input").css("font-family","'"+font+"'");
+
     });
 
     $("#preset").blur(function() {
@@ -129,15 +110,10 @@ $(document).ready(function() {
     $('#highlight').click(function() {
         $('#text_input').toggleClass('sprite');
     });
-    //$("#border, #highlight").click(function(){
-    //    var status=getImageArgs();
-    //    var img=$("#text_input").css('background-image');
-    //    img=img.replace(/c(\d+).*?\.png/, "c$1"+status+".png"); 
-    //    $("#text_input").css('background-image', img);
-    //});
 
-    /******** code for index.html **********/
-    $('#textColor, #shadowColor').ColorPicker( {
+    /******* code from index.html **********/
+
+    $('#textColor, #shadowColor').ColorPicker({
         onChange: function(hsb, hex, rgb, el) {
                       function getCheckedStatus(checkboxID) {
                           //return 1 if checked, or 0 
@@ -149,11 +125,11 @@ $(document).ready(function() {
                           }
                       }
                       $(el).val("#"+hex);
-                      if ($(el).attr("id")=="textColor") {
-                          $("#text_input").css('color', '#' + hex);
-                      }
+                      if ($(el).attr("id")=="textColor")
+    {
+        $("#text_input").css('color', '#' + hex);
+    }
                       else if (getCheckedStatus("#shadow")=='True') {
-                          //text-shadow: 0.1em 0.1em #333
                           $("#text_input").css('text-shadow', '#' + hex+" 0 0 3px");
                       }
 
@@ -174,6 +150,6 @@ $(document).ready(function() {
     $("#textColor").val("#FFFFFF");
     $("#shadowColor").val("#000000");
 
-    /*********** code from index.html end ********/
+    /****** end of code from index.html ********/
 });//document ready ends
 

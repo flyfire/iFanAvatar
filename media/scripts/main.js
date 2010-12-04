@@ -128,9 +128,8 @@ $(document).ready(function() {
     $("#pic_output").click(function(){
         //get the url:
         var url=$("#pic_output img").attr('src');
-        window.open(url);
-    });
-
+        //TODO:download the pic url.
+    }); 
     
     /******* code from index.html **********/
 

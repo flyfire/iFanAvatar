@@ -83,31 +83,6 @@ $(document).ready(function() {
 
     });
 
-    $("#preset").blur(function() {
-        set=$(this).val();
-        if (set=='aifan') { 
-            //TODO: add shadow control
-            $("#font_select").val("iYaHei.ttf"); 
-            $("#textColor").val("#FFFFFF");
-            $("#bg").val("c206_hb.png");
-            $('#border').attr('checked','checked');
-            $('#highlight').attr('checked','checked'); 
-        }
-        else if (set == 'fanfou') {
-            //TODO: add shadow control 
-            $("#font_select").val("msjhbd.ttf");
-            $("#textColor").val("#FFFFFF");
-            $("#bg").val("c192.png");
-            $('#border').removeAttr('checked');
-            $('#highlight').removeAttr('checked');
-        } 
-        else {
-            $("#textColor").val("#FFFFFF"); 
-            $("#shadowColor").val("#000000"); 
-        }
-
-    });
-
     $('.bgcolors').click(function() {
         var bgColor = $(this).css('background-color');
         $("#bg").val($(this).attr('id'));
@@ -118,6 +93,43 @@ $(document).ready(function() {
         $('#text_input').toggleClass('sprite');
     });
 
+    $("#preset").change(function() {
+        set=$(this).val();
+        if (set=='ifan') { 
+            $("#font_select").val("iYaHei.ttf"); 
+            $("#textColor").val("#FFFFFF");
+            $("#bg").val("c206_hb.png");
+            $('#border').attr('checked','checked');
+            $('#highlight').attr('checked','checked'); 
+            $("#c206").click();
+            $("input[@name='shadow'][@value=1]").attr('checked', 'checked'); 
+        }
+        else if (set == 'fanfou') {
+            //TODO: add shadow control 
+            $("#font_select").val("msjhbd.ttf");
+            $("#textColor").val("#FFFFFF");
+            $("#bg").val("c192.png");
+            $('#border').removeAttr('checked');
+            $('#highlight').removeAttr('checked'); 
+            $("#c192").click();
+            $("input[@name='shadow'][@value=0]").attr('checked', 'checked'); 
+        } 
+        else {
+            $("#textColor").val("#FFFFFF"); 
+            $("#shadowColor").val("#000000"); 
+        }
+
+    });
+    $("#preset").change();
+
+    //download pic
+    $("#pic_output").click(function(){
+        //get the url:
+        var url=$("#pic_output img").attr('src');
+        window.open(url);
+    });
+
+    
     /******* code from index.html **********/
 
     $('#textColor, #shadowColor').ColorPicker({

@@ -38,7 +38,7 @@ $(document).ready(function() {
         var shadowColor=$("#shadowColor").val();
         var font=$("#font_select").val();
         var border=getCheckedStatus("#border");
-        var shadow=getCheckedStatus("#shadow");
+        var shadow=$("input[@name='shadow'][@checked]").val();
         var highlight=getCheckedStatus("#highlight"); 
 
         return {
@@ -152,7 +152,9 @@ $(document).ready(function() {
     });
     $("#textColor").val("#FFFFFF");
     $("#shadowColor").val("#000000");
+    
 
+    
     /****** end of code from index.html ********/
 });//document ready ends
 

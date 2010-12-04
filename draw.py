@@ -31,12 +31,8 @@ def findPath(path):
 def fontFile(font):
     return findPath("font/%s" % font) 
 
-def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, highlight):
-    """draw avatar. Core part of the program."""
-
-    pure=md5(text+bg+font+textColor+shadowColor+str(border)+str(shadow)+str(highlight)).hexdigest()+".png" 
-    filename=findPath('media/result/')+pure 
-    pFont=fontFile(font)
+def fontPosition(pFont):
+    '''specify the position and size for each font'''
     if pFont.find("wqy")!=-1: #for wenquanyi
         textPosition=(20, 15)
         fontSize=150 
@@ -61,11 +57,19 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
     elif pFont.find("liuti") !=-1 :
         textPosition=(15, 15)
         fontSize=165 
+    return (textPosition, fontSize) 
 
 
+def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, highlight):
+    """draw avatar. Core part of the program."""
 
-    #generate new pic only when not existing
+    pure=md5(text+bg+font+textColor+shadowColor+str(border)+str(shadow)+str(highlight)).hexdigest()+".png" 
+    filename=findPath('media/result/')+pure 
+    pFont=fontFile(font)
 
+    (textPosition, fontSize)=fontPosition(pFont)
+
+    #generate new pic only when not existing 
     if not os.path.exists(filename):
         # when debugging, set if to 1, so as to gen pic each time;
         # when done, set if to not os.path.exists(filename), and only gen new pics.
@@ -75,13 +79,20 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
         font=ImageFont.truetype(pFont, fontSize)
         width=180
         height=180
-        box=(10,10,width+10, height+10)
-        side=13
-        position=(0+side,0+side, width+side, height+side)
-
         img_draw=ImageDraw.Draw(image_b)
+        shadow=int(shadow)
+        if shadow ==0:    #no shadow at all
+            img_draw.text(textPosition,text,font=font, fill=textColor) 
+            image_b.save(filename)
+        else  :
+            if shadow==2: #shadow offset
+                side=15
+            else:         #shadow but no offset
+                side=10 
 
-        if shadow:
+            box=(10,10,width+10, height+10)
+            position=(0+side,0+side, width+side, height+side)
+
             img_draw.text(textPosition,text,font=font,fill=shadowColor) 
             imgfilted=image_b.filter(ImageFilter.BLUR) 
             region=imgfilted.crop(box)
@@ -89,9 +100,7 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
             image_a.paste(region,position)
             img_draw.text(textPosition,text,font=font, fill=textColor) 
             image_a.save(filename)
-        else:
-            img_draw.text(textPosition,text,font=font, fill=textColor) 
-            image_b.save(filename)
-    
+
+  
     html="""<img src="./site_media/result/%s">""" % (pure)
     return HttpResponse(html)

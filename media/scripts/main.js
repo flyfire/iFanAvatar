@@ -77,11 +77,13 @@ $(document).ready(function() {
 
     });//submitbutton ends
 
+    /*
     $("#font_select").change(function() {
         var font=$(this).val();
         $("#text_input").css("font-family","'"+font+"'");
 
     });
+    */
 
     $('.bgcolors').click(function() {
         var bgColor = $(this).css('background-color');

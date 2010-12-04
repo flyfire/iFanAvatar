@@ -32,7 +32,7 @@ def home(request):
     t = get_template('index.html')
     
     html = t.render(Context({'fontdict':fontdict,
-        'fontcss': fontcss(),
+#        'fontcss': fontcss(),
         "version":  version,
         "build":    build}))
     return HttpResponse(html)

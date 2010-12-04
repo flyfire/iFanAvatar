@@ -105,6 +105,7 @@ $(document).ready(function() {
             $('#highlight').attr('checked','checked'); 
             $("#c206").click();
             $("input[@name='shadow'][@value=1]").attr('checked', 'checked'); 
+            $("#shadowColor").val("#000000"); 
         }
         else if (set == 'fanfou') {
             //TODO: add shadow control 
@@ -115,12 +116,18 @@ $(document).ready(function() {
             $('#highlight').removeAttr('checked'); 
             $("#c192").click();
             $("input[@name='shadow'][@value=0]").attr('checked', 'checked'); 
+            $("#shadowColor").val("#000000"); 
         } 
         else {
             $("#textColor").val("#FFFFFF"); 
-            $("#shadowColor").val("#000000"); 
         }
 
+    });
+    $("#preset").click(function(){
+         $(this).change(); 
+    });
+    $("#preset").blur(function(){
+         $(this).change(); 
     });
     $("#preset").change();
 

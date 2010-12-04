@@ -6,6 +6,7 @@ draw.py
 """
 import os
 import sys
+import glob
 import Image
 import ImageDraw
 import ImageFont
@@ -26,7 +27,27 @@ def findPath(path):
     '''path is a relative;
     return absolute path based on the project folder'''
 
-    return os.path.join(os.path.dirname(__file__), path)
+    return os.path.join(os.path.dirname(__file__), path) 
+
+def delete_pic(remain=100):
+    '''delete old pics so as to reduce the disk usage'''
+
+    p=findPath("media/result/*.png")
+
+    files=glob.glob(p)
+    s={}
+    for f in files:
+        statinfo=os.stat(f)
+        s[f]=statinfo.st_mtime        
+
+    c= s.items()
+    c.sort(key=lambda x:x[1]) 
+
+    if len(c)<=remain:
+        pass
+    else:
+        for (x,y) in c[0:len(c)-remain]:            
+            os.unlink(x)
 
 def fontFile(font):
     return findPath("font/%s" % font) 
@@ -62,6 +83,8 @@ def fontPosition(pFont):
 
 def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, highlight):
     """draw avatar. Core part of the program."""
+
+    delete_pic()
 
     pure=md5(text+bg+font+textColor+shadowColor+str(border)+str(shadow)+str(highlight)).hexdigest()+".png" 
     filename=findPath('media/result/')+pure 

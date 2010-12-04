@@ -3,7 +3,8 @@ $(document).ready(function() {
     function getImageArgs() {
         var border=getCheckedStatus("#border");
         var highlight=getCheckedStatus("#highlight");
-        var status="";
+        var status=""; 
+
         if (highlight=='True') {
             status+="h";
         }
@@ -29,6 +30,10 @@ $(document).ready(function() {
     //get auguments 
     function getArgs() {
         var bg = $("#bg").val() + getImageArgs($(this)) + ".png";
+
+        //important code for fixing pic name; 
+        //pls don't delete
+        bg=bg.replace(/\.png[_bh]{0,3}\.png$/, '.png'); 
 
         var bg_h = $("#highlight").attr("checked");
         var bg_b = $("#border").attr("checked");
@@ -65,7 +70,7 @@ $(document).ready(function() {
                 }
                 $("#history").append(data);
                 $("#history>img").click(function() {
-                    console.log($(this));
+                    $("#pic_output").html("<img src='"+$(this).attr('src')+"' />");
                 });
             }
         }); //request ends
@@ -80,26 +85,25 @@ $(document).ready(function() {
 
     $("#preset").blur(function() {
         set=$(this).val();
-        if (set=='aifan') {
+        if (set=='aifan') { 
+            //TODO: add shadow control
             $("#font_select").val("iYaHei.ttf"); 
             $("#textColor").val("#FFFFFF");
-            $("#bg").val("logo192.png");
+            $("#bg").val("c206_hb.png");
             $('#border').attr('checked','checked');
-            $('#shadow').attr('checked','checked');
             $('#highlight').attr('checked','checked'); 
         }
         else if (set == 'fanfou') {
+            //TODO: add shadow control 
             $("#font_select").val("msjhbd.ttf");
             $("#textColor").val("#FFFFFF");
-            $("#bg").val("logo172.png");
+            $("#bg").val("c192.png");
             $('#border').removeAttr('checked');
-            $('#shadow').removeAttr('checked');
             $('#highlight').removeAttr('checked');
         } 
         else {
             $("#textColor").val("#FFFFFF"); 
-            $("#shadowColor").val("#000000");
-
+            $("#shadowColor").val("#000000"); 
         }
 
     });

@@ -43,7 +43,7 @@ $(document).ready(function() {
         var shadowColor=$("#shadowColor").val();
         var font=$("#font_select").val();
         var border=getCheckedStatus("#border");
-        var shadow=$("input[@name='shadow'][@checked]").val();
+        var shadow=$("input[name='shadow']:checked").val();
         var highlight=getCheckedStatus("#highlight"); 
 
         return {
@@ -104,7 +104,7 @@ $(document).ready(function() {
             $('#border').attr('checked','checked');
             $('#highlight').attr('checked','checked'); 
             $("#c206").click();
-            $("input[@name='shadow'][@value=1]").attr('checked', 'checked'); 
+            $("input[name='shadow'][value=1]").attr('checked', 'checked'); 
             $("#shadowColor").val("#000000"); 
         }
         else if (set == 'fanfou') {
@@ -115,7 +115,7 @@ $(document).ready(function() {
             $('#border').removeAttr('checked');
             $('#highlight').removeAttr('checked'); 
             $("#c192").click();
-            $("input[@name='shadow'][@value=0]").attr('checked', 'checked'); 
+            $("input[name='shadow'][value=0]").attr('checked', 'checked'); 
             $("#shadowColor").val("#000000"); 
         } 
         else {

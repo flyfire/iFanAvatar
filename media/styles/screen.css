@@ -10,6 +10,17 @@ a,img{border:none;}
 /* main */
 html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;background:#222 url(../images/bg.png) fixed repeat;color:#aaa;text-align:center;}
 #wrapper,#footer{width:900px;text-align:left;overflow:hidden;margin:auto;}
+#hat {
+    position:absolute;
+    /*TODO:adjust the position by jQuery*/
+    width:100px;
+    height:100px;
+    outline:1px solid red;
+}
+
+#hat img {
+    width:100%;
+}
 #title {width:850px;margin:50px auto 10px auto;background:transparent url(../images/nbg.png) no-repeat 0px 0px;}
 #title:hover {background:transparent url('../images/nbg.png') no-repeat 0px -123px;}
 #title img{opacity:1;-webkit-transition-property:opacity;-webkit-transition-duration:300ms;}

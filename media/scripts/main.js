@@ -1,5 +1,11 @@
 $(document).ready(function() { 
 
+    $("#hat").draggable({
+        containment: "#text_input",
+    }).resizable({
+        aspectRatio: 1 / 1,
+    });
+
     function getImageArgs() {
         var border=getCheckedStatus("#border");
         var highlight=getCheckedStatus("#highlight");

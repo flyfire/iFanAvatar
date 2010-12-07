@@ -127,3 +127,4 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
   
     html="""<img src="./site_media/result/%s">""" % (pure)
     return HttpResponse(html)
+

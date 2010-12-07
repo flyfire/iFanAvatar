@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import os
+import random
+
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.template import Template, Context
 from django.shortcuts import render_to_response
 from fontdict import fontdict
-from draw import my_draw
+from draw import my_draw 
 from misc import getVersionInfor
 
 def fontcss():
@@ -62,3 +65,20 @@ def generate(request):
             shadow=shadow,
             highlight=highlight)
     
+def generate_random(request):
+    bgPath = os.getcwd() + "/media/colors/"
+    fontPath = os.getcwd() + "/media/font"
+
+    def randomColorUnit():
+        return str(hex(random.randrange(0x00, 0xFF))[2:]).zfill(2)
+
+    bg = random.choice(os.listdir(bgPath))
+    text = request.GET.get('text', '')
+    font = random.choice(os.listdir(fontPath))
+    textColor = "#" + randomColorUnit() + randomColorUnit() + randomColorUnit()
+    shadowColor = "#" + randomColorUnit() + randomColorUnit() + randomColorUnit()
+    border = random.randint(0, 1)
+    shadow = random.randint(0, 2)
+    highlight = random.randint(0, 1)
+
+    return my_draw(request, bg, text, font, textColor, shadowColor, border, shadow, highlight)

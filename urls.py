@@ -1,6 +1,6 @@
 # encoding: utf-8
 from django.conf.urls.defaults import *
-from views import home, generate
+from views import home, generate, generate_random
 import os.path
 
 # Uncomment the next two lines to enable the admin:
@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     # (r'^admin/', include(admin.site.urls)),
     (r'^/?$', home),
     (r'^gen$',generate),
+    (r'^random$', generate_random),
     (r'^site_media/(?P<path>.*/?)$', 'django.views.static.serve',
             {'document_root': STATIC_DOC_ROOT}),
 )

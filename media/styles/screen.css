@@ -14,12 +14,13 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
 #title:hover {background:transparent url('../images/nbg.png') no-repeat 0px -123px;}
 #title img{opacity:1;-webkit-transition-property:opacity;-webkit-transition-duration:300ms;}
 #title img:hover {opacity:0;}
-#content{width:810px;position:relative;background:#222;margin:0 auto 20px auto;padding:15px 20px;border:1px solid #000;-webkit-border-radius:10px;-moz-border-radius:10px;-moz-box-shadow:0 2px 5px rgba(0,0,0,.75);}
+#content{width:810px;position:relative;background:#222;margin:0 auto 20px auto;padding:15px 20px;border:1px solid #000;-webkit-border-radius:10px;-moz-border-radius:10px;-moz-box-shadow:0 2px 5px rgba(0,0,0,.75);-webkit-box-shadow:0 2px 5px rgba(0,0,0,.75);}
 h3{color:#fff;font-weight:normal;font-size:18px;text-shadow:0 1px 0 black;}
 h4{color:#fff;font-weight:normal;font-size:14px;text-shadow:0 1px 0 black;}
 input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;overflow:hidden;}
-#text_input{color:#fff;background-color:#00A3CC;text-shadow:0 0 3px rgba(0,0,0,1);text-align:center;margin:10px 0 0 0;padding:6px;font-size:142px;line-height:142px;height:188px;width:188px;border:3px solid #222;-webkit-transition-property:border,background-color;-webkit-transition-duration:300ms;}
-.sprite{background:-moz-linear-gradient(-45deg,rgba(255,255,255,.2),rgba(255,255,255,0));background: -webkit-gradient(linear,left top,right bottom,from(rgba(255,255,255,.2)),to(rgba(255,255,255,0)));}
+#text_input{color:#fff;background-color:#00A3CC;text-shadow:0 0 5px rgba(0,0,0,1);text-align:center;margin:10px 0 0 0;padding:6px;font-size:142px;line-height:142px;height:188px;width:188px;border:3px solid #222;-webkit-transition-property:border,background-color;-webkit-transition-duration:300ms;}
+.sprite{background:-moz-linear-gradient(-45deg,rgba(255,255,255,.4),rgba(255,255,255,0));background: -webkit-gradient(linear,left top,right bottom,from(rgba(255,255,255,.2)),to(rgba(255,255,255,0)));}
+.sdshadow{text-shadow:3px 3px 5px rgba(0,0,0,1);}
 #text_input:hover,#text_input:focus{border:3px solid #fff;}
 #opt_templates{width:100px;margin-left:20px;}
 #opt_text_input{margin-bottom:15px;}
@@ -55,9 +56,9 @@ input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:
 #btn_gen {cursor:pointer;width:178px;height:62px;background:transparent url('../images/nbg.png') no-repeat 0px -246px ;}
 #btn_gen:hover {background:transparent url('../images/nbg.png') no-repeat 0px -308px;}
 #pic_output{position:absolute;right:20px;top:20px;}
-#output_link{background-color:rgba(0,0,0,.7);color:#fff;font-size:14px;padding:10px 0;position:absolute;right:0;top:160px;width:200px;text-align:center;opacity:0;text-shadow:0 1px 0 rgba(0,0,0,.7);-webkit-transition-property:opacity;-webkit-transition-duration:300ms;}
+#output_link{background-color:rgba(0,0,0,.7);color:#fff;font-size:12px;padding:10px 0;position:absolute;right:0;top:160px;width:200px;text-align:center;display:none;;text-shadow:0 1px 0 rgba(0,0,0,.7);}
 #output_link a{color:#fff;text-decoration:none;}
-#pic_output:hover #output_link{opacity:1;}
+#pic_output:hover #output_link{display:block;}
 #loading-icon {position:absolute; top:96px; right:-10px;}
 #history{position:absolute;right:20px;top:226px;width:200px; height:100px;overflow:hidden;z-index:50000;}
 #history img{width:35px;height:35px;margin:10px 0 0 5px; cursor:pointer;}

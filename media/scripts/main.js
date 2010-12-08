@@ -1,5 +1,14 @@
 $(document).ready(function() { 
 
+    String.prototype.s= function (o) {
+        return this.replace(/{([^{}]*)}/g,
+            function (a, b) {
+                var r = o[b];
+                return typeof r === 'string' || typeof r === 'number' ? r : a;
+            }
+        );
+    };
+        
     function getImageArgs() {
         var border=getCheckedStatus("#border");
         var highlight=getCheckedStatus("#highlight");
@@ -64,13 +73,28 @@ $(document).ready(function() {
             $("#pic_output").html(data);
             //add img url to history:
             var history=$("#history").html();
-            if (history.search(data) == -1 && data.search("loading.gif") == -1) {
-                if ($("#history>img").length >= 10) {
-                    $("#history>img:first").remove();
+            var match=data.match(/\w+\.png/i);
+            if (!match)
+            {
+                return false;
+            } 
+            var img=match[0];
+            if (history.search(img) == -1 && data.search("loading.gif") == -1) {
+                if ($("#history>a>img").length >= 10) {
+                    $("#history>a>img:first").remove();
                 }
                 $("#history").append(data);
-                $("#history>img").click(function() {
-                    $("#pic_output").html("<img src='"+$(this).attr('src')+"' />");
+                $("#history > a >img").click(function() {
+                    
+                    var src=$(this).attr('src');
+                    function img2html(img)
+                    {
+                        return "<a href=\"result?url={url}\"><img src=\"{url}\"></a>".s({url:src});
+                    }
+                    $("#pic_output").html(img2html(src));
+                    //return false is very import to avoid downloading 
+                    //from the history zone
+                    return false;
                 });
             }
         }); //request ends

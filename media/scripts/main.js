@@ -99,6 +99,10 @@ $(document).ready(function() {
             }
         }); //request ends
 
+        /** 
+         * for xmas special!
+         */
+
     });//submitbutton ends
 
     /*
@@ -202,5 +206,49 @@ $(document).ready(function() {
     $("#shadowColor").val("#000000"); 
    
     /****** end of code from index.html ********/
+
+    /****** xmas-special ******/
+
+    $("#xmas-trigger").click(function(e) {
+        $("#xmas-special").css({
+            top: e.pageY,
+            left: e.pageX
+        }).fadeIn();
+    });
+
+
+    $("#xmas-hat-holder").resizable({
+        aspectRatio: 1/1,
+        maxHeight: 200,
+        maxWidth: 200,
+        minHeight: 10,
+        minWidth: 10,
+        stop: function(event, ui) {
+            console.log(ui.size);
+        }
+    }).draggable({
+        containment:"#avatar-holder",
+        stop: function() {
+            console.log($(this).offset());
+        }
+    });
+
+    $("#xmas-slider").slider({
+        max: 359,
+        min: 0,
+        range: "min",
+        slide: function(event, ui) {
+            $("#xmas-hat-angel").val(ui.value);
+            $("#xmas-hat").attr("style", int2css(ui.value));
+        }
+    });
+
+    $("#xmas-off").click(function() {
+        $("#xmas-special").fadeOut();
+    });
+
+    function int2css(deg) {
+        return "-webkit-transform: rotate("+deg+"deg); -moz-transform: rotate("+deg+"deg);";
+    }
 });//document ready ends
 

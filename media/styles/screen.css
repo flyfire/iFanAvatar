@@ -67,3 +67,38 @@ input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:
 #footer{width:850px;margin:0 auto 20px auto;line-height:1.5;text-shadow:0 1px 0 black;font-weight:normal}
 #footer a{font-weight:bold;color:#aaa;-webkit-transition-property:all;-webkit-transition-duration:300ms;}
 #footer a:hover{color:#fff;}
+
+
+/*****xmas special*******/
+
+#xmas-special {
+    padding:30px;
+    display:none;
+    background:#F5F5F5;
+    position:absolute;
+    width:200px;
+    height:240px;
+    /*-moz-box-shadow:0 0 30px red;*/
+    /*-webkit-box-shadow:0 0 30px red;*/
+}
+
+#xmas-off {
+    cursor:pointer;
+    height:30px;
+    width:30px;
+    background:transparent url(../images/close.png) no-repeat 0px 0px;
+    z-index:50000;
+    position:absolute;
+    left:-15px;
+    top:-15px;
+}
+
+#xmas-hat-holder {
+    position:absolute;
+    width:100px;
+    height:100px;
+}
+
+#xmas-hat-holder img {
+    width:100%;
+}

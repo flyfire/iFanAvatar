@@ -175,10 +175,8 @@ $(document).ready(function() {
         $(this).ColorPickerSetColor(this.value.replace("#",''));
     });
     $("#textColor").val("#FFFFFF");
-    $("#shadowColor").val("#000000");
-    
-
-    
+    $("#shadowColor").val("#000000"); 
+   
     /****** end of code from index.html ********/
 });//document ready ends
 

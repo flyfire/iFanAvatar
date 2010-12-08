@@ -125,6 +125,7 @@ def my_draw(request,bg, text, font, textColor, shadowColor, border, shadow, high
             image_a.save(filename)
 
   
-    html="""<img src="./site_media/result/%s">""" % (pure)
+    url="""./site_media/result/%s""" % pure
+    html="""<a href="/result?url=%s"><img src="%s"></a>""" % (url, url)
     return HttpResponse(html)
 

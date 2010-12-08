@@ -2,6 +2,7 @@
 from django.conf.urls.defaults import *
 from views import home, generate, generate_random
 import os.path
+from downloader import downloader
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -21,6 +22,7 @@ urlpatterns = patterns('',
     (r'^/?$', home),
     (r'^gen$',generate),
     (r'^random$', generate_random),
+    (r'^result$', downloader),
     (r'^site_media/(?P<path>.*/?)$', 'django.views.static.serve',
             {'document_root': STATIC_DOC_ROOT}),
 )

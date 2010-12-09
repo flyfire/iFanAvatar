@@ -210,10 +210,12 @@ $(document).ready(function() {
     /****** xmas-special ******/
 
     $("#xmas-trigger").click(function(e) {
+        $("#avatar-img").attr("src", '');
         $("#xmas-special").css({
             top: e.pageY,
             left: e.pageX
         }).fadeIn();
+        $("#avatar-img").attr("src", $("#pic_output>a>img").attr('src'));
     });
 
 

@@ -70,7 +70,54 @@ $(document).ready(function() {
     $('#btn_gen').click(function() { 
         $("#pic_output").html("<img id='loading-icon' src='/site_media/images/loading.gif' />");
         $.get('/gen', getArgs(),function(data) {
-            $("#pic_output").html(data);
+            var xmas = '<span id="xmas-trigger" style="position:absolute;color:red;font-size:1em;text-align:center;cursor:pointer;">圣诞惊喜</span>';
+            $("#pic_output").html(data).append(xmas);
+    /****** xmas-special ******/
+
+    $("#xmas-trigger").click(function(e) {
+        $("#avatar-img").attr("src", '');
+        $("#xmas-special").css({
+            top: e.pageY,
+            left: e.pageX - 100
+        }).fadeIn();
+        $("#avatar-img").attr("src", $("#pic_output>a>img").attr('src'));
+    });
+
+
+    $("#xmas-hat-holder").resizable({
+        aspectRatio: 1/1,
+        maxHeight: 200,
+        maxWidth: 200,
+        minHeight: 10,
+        minWidth: 10,
+        stop: function(event, ui) {
+            console.log(ui.size);
+        }
+    }).draggable({
+        containment:"#avatar-holder",
+        stop: function() {
+            console.log($(this).offset());
+        }
+    });
+
+    $("#xmas-slider").slider({
+        max: 359,
+        min: 0,
+        range: "min",
+        slide: function(event, ui) {
+            $("#xmas-hat-angel").val(ui.value);
+            $("#xmas-hat").attr("style", int2css(ui.value));
+        }
+    });
+
+    $("#xmas-off").click(function() {
+        $("#xmas-special").fadeOut();
+    });
+
+    function int2css(deg) {
+        return "-webkit-transform: rotate("+deg+"deg); -moz-transform: rotate("+deg+"deg);";
+    }
+    /**** end of xmas***/
             //add img url to history:
             var history=$("#history").html();
             var match=data.match(/\w+\.png/i);
@@ -91,7 +138,7 @@ $(document).ready(function() {
                     {
                         return "<a href=\"result?url={url}\"><img src=\"{url}\"></a>".s({url:src});
                     }
-                    $("#pic_output").html(img2html(src));
+                    $("#pic_output").html(img2html(src)).append(xmas);
                     //return false is very import to avoid downloading 
                     //from the history zone
                     return false;
@@ -207,50 +254,5 @@ $(document).ready(function() {
    
     /****** end of code from index.html ********/
 
-    /****** xmas-special ******/
-
-    $("#xmas-trigger").click(function(e) {
-        $("#avatar-img").attr("src", '');
-        $("#xmas-special").css({
-            top: e.pageY,
-            left: e.pageX
-        }).fadeIn();
-        $("#avatar-img").attr("src", $("#pic_output>a>img").attr('src'));
-    });
-
-
-    $("#xmas-hat-holder").resizable({
-        aspectRatio: 1/1,
-        maxHeight: 200,
-        maxWidth: 200,
-        minHeight: 10,
-        minWidth: 10,
-        stop: function(event, ui) {
-            console.log(ui.size);
-        }
-    }).draggable({
-        containment:"#avatar-holder",
-        stop: function() {
-            console.log($(this).offset());
-        }
-    });
-
-    $("#xmas-slider").slider({
-        max: 359,
-        min: 0,
-        range: "min",
-        slide: function(event, ui) {
-            $("#xmas-hat-angel").val(ui.value);
-            $("#xmas-hat").attr("style", int2css(ui.value));
-        }
-    });
-
-    $("#xmas-off").click(function() {
-        $("#xmas-special").fadeOut();
-    });
-
-    function int2css(deg) {
-        return "-webkit-transform: rotate("+deg+"deg); -moz-transform: rotate("+deg+"deg);";
-    }
 });//document ready ends
 

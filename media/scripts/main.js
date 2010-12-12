@@ -129,9 +129,9 @@ $(document).ready(function() {
                 console.log(ui.size);
             }
         }).draggable({
+            zIndex: 9999999,
             containment:"#avatar-holder",
             stop: function() {
-                //console.log($("#"))
                 console.log($(this).offset());
             }
         });

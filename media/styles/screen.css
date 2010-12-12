@@ -97,6 +97,11 @@ input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:
     position:absolute;
     width:100px;
     height:100px;
+    cursor:pointer;
+}
+
+#xmas-hat-holder:hover {
+    background:rgba(245, 245, 245, .5);
 }
 
 #xmas-hat-holder img {

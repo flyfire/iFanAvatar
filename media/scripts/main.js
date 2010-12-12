@@ -112,7 +112,13 @@ $(document).ready(function() {
     $('.bgcolors').click(function() {
         var bgColor = $(this).css('background-color');
         $("#bg").val($(this).attr('id'));
-        $('#text_input').css('background-color', bgColor);
+        $('#text_input').css('background', bgColor);
+    });
+
+    $('#transparent').click(function() {
+        var bgColor = $(this).css('background-color');
+        $("#bg").val($(this).attr('id'));
+        $('#text_input').css('background', 'transparent url(site_media/images/transparent_p.png)');
     });
 
     $('#highlight').click(function() {

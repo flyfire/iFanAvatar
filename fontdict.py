@@ -14,5 +14,6 @@ fontdict={
     "fzybksjt.ttf":"方正硬楷简",
     "xujinglei.ttf":"方正徐静蕾",
     "wqy-microhei.ttc":"文泉驿微米黑",
+    "fangzhengsuxinshiliukaijianti.ttf":"苏新诗柳楷简",
 }
 

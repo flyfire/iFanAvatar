@@ -12,20 +12,7 @@
         <link rel="stylesheet" href="site_media/styles/screen.css" type="text/css" media="screen" />
         <link rel="icon" href="site_media/favicon.ico" type="image/gif" />
 
-        <!-- font css generaged -->
-        <!--
-        <style type="text/css" media="screen"> 
-            {% for filename, fontname in fontdict.items %}
-            /****           {{ fontname }}           ****/ 
-            @font-face {
-                font-family: "{{ filename }}";
-                src: url(/site_media/font/{{ filename }});
-            }   
-            {% endfor %}
-        </style> 
-        -->
-        <!--font css end -->
-
+        
         <script type="text/javascript" src="site_media/scripts/jquery.js"></script>
         <script type="text/javascript" src="site_media/scripts/jquery-ui.min.js"></script>
         <!-- color picker begins--> 
@@ -38,6 +25,7 @@
         <!-- color picker ends--> 
 
         <script type="text/javascript" src="site_media/scripts/main.js"></script>
+		<script type="text/javascript" src="site_media/scripts/hat.js"></script>
     </head>
 
     <body>
@@ -157,6 +145,7 @@
             <div id="avatar-holder">
                 <img id="avatar-img" src=""/>
             </div>
+			<div><button id="add_hat">生成</button></div>
         </div>
 
         <!-- Google Analytics -->

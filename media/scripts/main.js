@@ -55,6 +55,24 @@ $(document).ready(function() {
         var shadow=$("input[name='shadow']:checked").val();
         var highlight=getCheckedStatus("#highlight"); 
 
+        //for x-mas
+        var withHat="False";
+        var angle=0;
+        var offsetLeft=0;
+        var offsetTop=0;
+        var hatWidth=0;
+        var hatHeight=0;
+        
+        //for x-mas 
+        if ($("#xmas-special:visible").length)
+        {            
+            withHat="True";
+            
+        }
+        
+        //position
+        
+        
         return {
             'bg':bg,
             'text':text,
@@ -64,12 +82,18 @@ $(document).ready(function() {
             'border':border,
             'shadow':shadow,
             'highlight':highlight,
+            'withHat':withHat,
+            'angle':angle,
+            'offsetLeft':offsetLeft,
+            'offsetTop':offsetTop,
+            "hatWidth":hatWidth,
+            "hatHeight":hatHeight
         };
     }
 
     $('#btn_gen').click(function() { 
         $("#pic_output").html("<img id='loading-icon' src='/site_media/images/loading.gif' />");
-        $.get('/gen', getArgs(),function(data) {
+        $.get('/gen', getArgs(), function(data) {
             var xmas = '<span id="xmas-trigger" style="position:absolute;color:red;font-size:1em;text-align:center;cursor:pointer;">圣诞惊喜</span>';
             $("#pic_output").html(data).append(xmas);
     /****** xmas-special ******/
@@ -96,6 +120,7 @@ $(document).ready(function() {
     }).draggable({
         containment:"#avatar-holder",
         stop: function() {
+            //console.log($("#"))
             console.log($(this).offset());
         }
     });
@@ -253,6 +278,47 @@ $(document).ready(function() {
     $("#shadowColor").val("#000000"); 
    
     /****** end of code from index.html ********/
+    //for x-mas hat
+    
+    function getHatArgs()
+    {
+        //get current image result, 
+        //HAT: rotation angle, size, offset of the
+        
+        //site_media/result/bc98ff0348403f8098a3f7207c29f94f.png
+        var bg=$("#avatar-img").attr("src");
+        if (bg.length < 36)   //for valid result only
+        {
+            return;
+        }
+        
+        var hat=$("#xmas-hat").attr("src");//   site_media/images/hat.png
+        var angle=parseInt($("#xmas-slider").slider( "option", "value"));
+        
+        var base=$("#avatar-img").offset(); //left, top
+        var hatoffset=$("#xmas-hat-holder").offset();
+        var offsetLeft=hatoffset.left-base.left;
+        var offsetTop=hatoffset.top-base.top;
+        var hatWidth=$("#xmas-hat-holder").width();
+        var hatHeight=$("#xmas-hat-holder").height();
+        
+        return {
+            bg:bg,
+            hat:hat,
+            angle:angle,
+            offsetTop:offsetTop,
+            offsetLeft:offsetLeft,
+            hatHeight:hatHeight,
+            hatWidth:hatWidth
+        }
+    }
+    $("#add_hat").click(function(){
+        $("#pic_output").html("<img id='loading-icon' src='/site_media/images/loading.gif' />");
+        $.get("/hat", getHatArgs(), function(data){
+            //data==result
+            $("#pic_output").html(data);
+        });
+    });
 
 });//document ready ends
 

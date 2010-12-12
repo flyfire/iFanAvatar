@@ -77,6 +77,9 @@ def fontPosition(pFont):
         fontSize=155 
     elif pFont.find("liuti") !=-1 :
         textPosition=(15, 15)
+        fontSize=165
+    elif pFont.find("fangzhengsuxinshiliukaijianti") !=-1 :
+        textPosition=(15, 15)
         fontSize=165 
     return (textPosition, fontSize) 
 

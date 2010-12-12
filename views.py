@@ -10,7 +10,9 @@ from django.template import Template, Context
 from django.shortcuts import render_to_response
 from fontdict import fontdict
 from draw import my_draw 
+from hat import draw_hat
 from misc import getVersionInfor
+
 
 def fontcss():
     '''generate css for fonts; '''
@@ -54,7 +56,7 @@ def generate(request):
     border=eval(request.GET.get('border', '')) 
     shadow=eval(request.GET.get('shadow', '')) 
     highlight=eval(request.GET.get('highlight', '')) 
-
+    
     return my_draw(request,
             bg=bg,
             text=text,
@@ -64,6 +66,7 @@ def generate(request):
             border=border,
             shadow=shadow,
             highlight=highlight)
+    
     
 def generate_random(request):
     bgPath = os.getcwd() + "/media/colors/"
@@ -82,3 +85,15 @@ def generate_random(request):
     highlight = random.randint(0, 1)
 
     return my_draw(request, bg, text, font, textColor, shadowColor, border, shadow, highlight)
+
+def hat(request):
+    
+    bg = request.GET.get('bg', '')  #can be changed to POST
+    hat=request.GET.get('hat', '')
+    angle=int(request.GET.get('angle', ''))
+    offsetTop=int(request.GET.get('offsetTop', ''))
+    offsetLeft=int(request.GET.get('offsetLeft', ''))
+    hatHeight=int(request.GET.get('hatHeight', ''))
+    hatWidth=int(request.GET.get('hatWidth', ''))
+    
+    return draw_hat(bg, hat, angle, offsetLeft, offsetTop, hatWidth, hatHeight)

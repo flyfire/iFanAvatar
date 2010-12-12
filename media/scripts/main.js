@@ -54,25 +54,7 @@ $(document).ready(function() {
         var border=getCheckedStatus("#border");
         var shadow=$("input[name='shadow']:checked").val();
         var highlight=getCheckedStatus("#highlight"); 
-
-        //for x-mas
-        var withHat="False";
-        var angle=0;
-        var offsetLeft=0;
-        var offsetTop=0;
-        var hatWidth=0;
-        var hatHeight=0;
-        
-        //for x-mas 
-        if ($("#xmas-special:visible").length)
-        {            
-            withHat="True";
-            
-        }
-        
-        //position
-        
-        
+      
         return {
             'bg':bg,
             'text':text,
@@ -81,109 +63,114 @@ $(document).ready(function() {
             'font':font, 
             'border':border,
             'shadow':shadow,
-            'highlight':highlight,
-            'withHat':withHat,
-            'angle':angle,
-            'offsetLeft':offsetLeft,
-            'offsetTop':offsetTop,
-            "hatWidth":hatWidth,
-            "hatHeight":hatHeight
+            'highlight':highlight
         };
     }
+    
+    function addImgToHistory(data)
+    {
+        //add img url to history:
+        var history=$("#history").html();
+        var match=data.match(/\w+\.png/i);
+        if (!match)
+        {
+            return false;
+        } 
 
+        var img=match[0];
+        if (history.search(img) == -1 && data.search("loading.gif") == -1) {
+            if ($("#history>a>img").length >= 10) {
+                $("#history>a>img:first").remove();
+            }
+
+            $("#history").append(data); 
+        }
+
+        $("#history > a >img").click(function() {
+                
+            var src=$(this).attr('src');
+            function img2html(img)
+            {
+                return "<a href=\"result?url={url}\"><img src=\"{url}\"></a>".s({url:src});
+            }
+            var img=img2html(src);
+            $("#pic_output").html(img);//.append(xmas);
+            addXmasButton();            
+            //return false is very import to avoid downloading //from the history zone
+            return false;
+        });
+
+
+    }//addImgToHistory end
+    
+    function addXmasButton()
+    {
+        var xmas = '<span id="xmas-trigger" style="position:absolute;color:red;font-size:1em;text-align:center;cursor:pointer;">圣诞惊喜</span>';
+        $("#pic_output").append(xmas); 
+        /****** xmas-special ******/
+
+        $("#xmas-trigger").click(function(e) {
+            $("#avatar-img").attr("src", '');
+            $("#xmas-special").css({
+                top: e.pageY,
+                left: e.pageX - 100
+            }).fadeIn();
+            $("#avatar-img").attr("src", $("#pic_output>a>img").attr('src'));
+        });
+
+
+        $("#xmas-hat-holder").resizable({
+            aspectRatio: 1/1,
+            maxHeight: 200,
+            maxWidth: 200,
+            minHeight: 10,
+            minWidth: 10,
+            stop: function(event, ui) {
+                console.log(ui.size);
+            }
+        }).draggable({
+            containment:"#avatar-holder",
+            stop: function() {
+                //console.log($("#"))
+                console.log($(this).offset());
+            }
+        });
+
+        function int2css(deg) {
+            return "-webkit-transform: rotate("+deg+"deg); -moz-transform: rotate("+deg+"deg);";
+        } 
+
+        $("#xmas-slider").slider({
+            max: 359,
+            min: 0,
+            range: "min",
+            slide: function(event, ui) {
+                $("#xmas-hat-angel").val(ui.value);
+                $("#xmas-hat").attr("style", int2css(ui.value));
+            }
+        });
+
+        $("#xmas-off").click(function() {
+            $("#xmas-special").fadeOut();
+        });
+
+
+    }//addXmasButton end
+   
     $('#btn_gen').click(function() { 
         $("#pic_output").html("<img id='loading-icon' src='/site_media/images/loading.gif' />");
+
         $.get('/gen', getArgs(), function(data) {
-            var xmas = '<span id="xmas-trigger" style="position:absolute;color:red;font-size:1em;text-align:center;cursor:pointer;">圣诞惊喜</span>';
-            $("#pic_output").html(data).append(xmas);
-    /****** xmas-special ******/
+            $("#pic_output").html(data);
+            addImgToHistory(data);
+            addXmasButton();
 
-    $("#xmas-trigger").click(function(e) {
-        $("#avatar-img").attr("src", '');
-        $("#xmas-special").css({
-            top: e.pageY,
-            left: e.pageX - 100
-        }).fadeIn();
-        $("#avatar-img").attr("src", $("#pic_output>a>img").attr('src'));
-    });
-
-
-    $("#xmas-hat-holder").resizable({
-        aspectRatio: 1/1,
-        maxHeight: 200,
-        maxWidth: 200,
-        minHeight: 10,
-        minWidth: 10,
-        stop: function(event, ui) {
-            console.log(ui.size);
-        }
-    }).draggable({
-        containment:"#avatar-holder",
-        stop: function() {
-            //console.log($("#"))
-            console.log($(this).offset());
-        }
-    });
-
-    $("#xmas-slider").slider({
-        max: 359,
-        min: 0,
-        range: "min",
-        slide: function(event, ui) {
-            $("#xmas-hat-angel").val(ui.value);
-            $("#xmas-hat").attr("style", int2css(ui.value));
-        }
-    });
-
-    $("#xmas-off").click(function() {
-        $("#xmas-special").fadeOut();
-    });
-
-    function int2css(deg) {
-        return "-webkit-transform: rotate("+deg+"deg); -moz-transform: rotate("+deg+"deg);";
-    }
-    /**** end of xmas***/
-            //add img url to history:
-            var history=$("#history").html();
-            var match=data.match(/\w+\.png/i);
-            if (!match)
-            {
-                return false;
-            } 
-            var img=match[0];
-            if (history.search(img) == -1 && data.search("loading.gif") == -1) {
-                if ($("#history>a>img").length >= 10) {
-                    $("#history>a>img:first").remove();
-                }
-                $("#history").append(data);
-                $("#history > a >img").click(function() {
-                    
-                    var src=$(this).attr('src');
-                    function img2html(img)
-                    {
-                        return "<a href=\"result?url={url}\"><img src=\"{url}\"></a>".s({url:src});
-                    }
-                    $("#pic_output").html(img2html(src)).append(xmas);
-                    //return false is very import to avoid downloading 
-                    //from the history zone
-                    return false;
-                });
-            }
+            
         }); //request ends
 
-        /** 
-         * for xmas special!
-         */
-
+        //click to download
+               
     });//submitbutton ends
-
-    /*
-    $("#font_select").change(function() {
-        var font=$(this).val();
-        $("#text_input").css("font-family","'"+font+"'");
-
-    });
-    */
 
     $('.bgcolors').click(function() {
         var bgColor = $(this).css('background-color');
@@ -317,6 +304,8 @@ $(document).ready(function() {
         $.get("/hat", getHatArgs(), function(data){
             //data==result
             $("#pic_output").html(data);
+            addImgToHistory(data);
+            addXmasButton();
         });
     });
 

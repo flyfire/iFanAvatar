@@ -132,7 +132,7 @@ $(document).ready(function() {
             zIndex: 9999999,
             containment:"#avatar-holder",
             stop: function() {
-                console.log($(this).offset());
+                $(this).removeClass('ui-draggable-dragging');
             }
         });
 

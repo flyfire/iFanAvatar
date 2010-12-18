@@ -35,6 +35,11 @@ def draw_hat(bg, hat, angle, offsetLeft, offsetTop, hatWidth, hatHeight):
     pisition=(offsetLeft, offsetTop, hat.size[0]+offsetLeft, hat.size[1]+offsetTop)
     bg.paste(hat,pisition, hat)
     
+    #add snowflakes
+    snowfile=findPath('media/images/snowflakes.png')
+    snow=Image.open(snowfile)
+    bg.paste(snow, (0, 0, snow.size[0], snow.size[1]), snow)
+
     #save as file
     bg.save(filename, "PNG")
     filename=filename[-49:]

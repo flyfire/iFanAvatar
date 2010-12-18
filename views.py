@@ -90,10 +90,10 @@ def hat(request):
     
     bg = request.GET.get('bg', '')  #can be changed to POST
     hat=request.GET.get('hat', '')
-    angle=int(request.GET.get('angle', ''))
-    offsetTop=int(request.GET.get('offsetTop', ''))
-    offsetLeft=int(request.GET.get('offsetLeft', ''))
-    hatHeight=int(request.GET.get('hatHeight', ''))
-    hatWidth=int(request.GET.get('hatWidth', ''))
+    angle=int(float(request.GET.get('angle', '')))
+    offsetTop=int(float(request.GET.get('offsetTop', '')))
+    offsetLeft=int(float(request.GET.get('offsetLeft', '')))
+    hatHeight=int(float(request.GET.get('hatHeight', '')))
+    hatWidth=int(float(request.GET.get('hatWidth', '')))
     
     return draw_hat(bg, hat, angle, offsetLeft, offsetTop, hatWidth, hatHeight)

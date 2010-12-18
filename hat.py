@@ -30,7 +30,7 @@ def draw_hat(bg, hat, angle, offsetLeft, offsetTop, hatWidth, hatHeight):
     
     #resize the hat
     hat=hat.resize((hatWidth, hatHeight), Image.ANTIALIAS)
-    hat=hat.rotate(angle, Image.BILINEAR, expand=1)
+    hat=hat.rotate(angle, Image.BILINEAR)
     box=(0, 0, hat.size[0], hat.size[1])
     pisition=(offsetLeft, offsetTop, hat.size[0]+offsetLeft, hat.size[1]+offsetTop)
     bg.paste(hat,pisition, hat)

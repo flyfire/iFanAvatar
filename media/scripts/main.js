@@ -113,7 +113,8 @@ $(document).ready(function() {
             $("#avatar-img").attr("src", '');
             $("#xmas-special").css({
                 top: e.pageY,
-                left: e.pageX - 100
+                left: e.pageX - 130,
+                zIndex: 9999999,
             }).fadeIn();
             $("#avatar-img").attr("src", $("#pic_output>a>img").attr('src'));
         });
@@ -125,9 +126,6 @@ $(document).ready(function() {
             maxWidth: 200,
             minHeight: 10,
             minWidth: 10,
-            stop: function(event, ui) {
-                console.log(ui.size);
-            }
         }).draggable({
             zIndex: 9999999,
             containment:"#avatar-holder",
@@ -196,7 +194,6 @@ $(document).ready(function() {
             $("#shadowColor").val("#000000"); 
         }
         else if (set == 'fanfou') {
-            //TODO: add shadow control 
             $("#font_select").val("msjhbd.ttf");
             $("#textColor").val("#FFFFFF");
             $("#bg").val("c192.png");
@@ -220,11 +217,11 @@ $(document).ready(function() {
     $("#preset").change();
 
     //download pic
-    $("#pic_output").click(function(){
-        //get the url:
-        var url=$("#pic_output img").attr('src');
-        //TODO:download the pic url.
-    }); 
+    //$("#pic_output").click(function(){
+    //    //get the url:
+    //    var url=$("#pic_output img").attr('src');
+    //    //TODO:download the pic url.
+    //}); 
     
     /******* code from index.html **********/
 
@@ -288,8 +285,8 @@ $(document).ready(function() {
         var hatoffset=$("#xmas-hat-holder").offset();
         var offsetLeft=hatoffset.left-base.left;
         var offsetTop=hatoffset.top-base.top;
-        var hatWidth=$("#xmas-hat-holder").width();
-        var hatHeight=$("#xmas-hat-holder").height();
+        var hatWidth=$("#xmas-hat-holder>img").width();
+        var hatHeight=$("#xmas-hat-holder>img").height();
         
         return {
             bg:bg,

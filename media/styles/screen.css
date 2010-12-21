@@ -98,6 +98,8 @@ input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:
     width:100px;
     height:100px;
     cursor:pointer;
+    vertical-align:middle;
+    text-align:center;
 }
 
 #xmas-hat-holder:hover {

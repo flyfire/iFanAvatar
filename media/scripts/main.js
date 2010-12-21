@@ -145,8 +145,9 @@ $(document).ready(function() {
             min: 0,
             range: "min",
             slide: function(event, ui) {
-                $("#xmas-hat-angel").val(ui.value);
-                $("#xmas-hat").attr("style", int2css(ui.value));
+                var cangle = 360 - ui.value;//turn angle to counter clockwise
+                $("#xmas-hat-angel").val(cangle);
+                $("#xmas-hat").attr("style", int2css(cangle));
             }
         });
 

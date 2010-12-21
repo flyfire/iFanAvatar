@@ -145,7 +145,7 @@ $(document).ready(function() {
             min: 0,
             range: "min",
             slide: function(event, ui) {
-                var cangle = 360 - ui.value;//turn angle to counter clockwise
+                var cangle = ui.value;//turn angle to counter clockwise// original 360- ui.value
                 $("#xmas-hat-angel").val(cangle);
                 $("#xmas-hat").attr("style", int2css(cangle));
             }
@@ -308,6 +308,13 @@ $(document).ready(function() {
             addImgToHistory(data);
             addXmasButton();
         });
+    });
+    //hat selection
+    $("#x_hat").change(function(){
+        var img=$(this).val();
+        img="/site_media/images/"+img;
+        $("#xmas-hat").attr("src",img);
+        
     });
 
 });//document ready ends

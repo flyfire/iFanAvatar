@@ -282,6 +282,7 @@ $(document).ready(function() {
         
         var hat=$("#xmas-hat").attr("src");//   site_media/images/hat.png
         var angle=parseInt($("#xmas-slider").slider( "option", "value"));
+        angle=360-angle;
         
         var base=$("#avatar-img").offset(); //left, top
         var hatoffset=$("#xmas-hat-holder").offset();

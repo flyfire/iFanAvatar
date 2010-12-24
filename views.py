@@ -96,4 +96,4 @@ def hat(request):
     hatHeight=int(float(request.GET.get('hatHeight', '')))
     hatWidth=int(float(request.GET.get('hatWidth', '')))
     
-    return draw_hat(bg, hat, angle, offsetLeft, offsetTop, hatWidth, hatHeight)
+    return draw_hat(bg, hat, angle, offsetLeft, offsetTop, hatWidth, hatHeight) 

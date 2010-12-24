@@ -149,10 +149,7 @@ $(document).ready(function() {
             }
         });
 
-        $("#xmas-off").click(function() {
-            $("#xmas-special").fadeOut();
-        });
-
+        
 
     }//addXmasButton end
    
@@ -177,94 +174,8 @@ $(document).ready(function() {
         $('#text_input').css('background-color', bgColor);
     });
 
-    $('#highlight').click(function() {
-        $('#text_input').toggleClass('sprite');
-    });
-
-    $("#preset").change(function() {
-        set=$(this).val();
-        if (set=='ifan') { 
-            $("#font_select").val("iYaHei.ttf"); 
-            $("#textColor").val("#FFFFFF");
-            $("#bg").val("c206_hb.png");
-            $('#border').attr('checked','checked');
-            $('#highlight').attr('checked','checked'); 
-            $("#c206").click();
-            $("input[name='shadow'][value=1]").attr('checked', 'checked'); 
-            $("#shadowColor").val("#000000"); 
-        }
-        else if (set == 'fanfou') {
-            $("#font_select").val("msjhbd.ttf");
-            $("#textColor").val("#FFFFFF");
-            $("#bg").val("c192.png");
-            $('#border').removeAttr('checked');
-            $('#highlight').removeAttr('checked'); 
-            $("#c192").click();
-            $("input[name='shadow'][value=0]").attr('checked', 'checked'); 
-            $("#shadowColor").val("#000000"); 
-        } 
-        else {
-            $("#textColor").val("#FFFFFF"); 
-        }
-
-    });
-    $("#preset").click(function(){
-         $(this).change(); 
-    });
-    $("#preset").blur(function(){
-         $(this).change(); 
-    });
-    $("#preset").change();
-
-    //download pic
-    //$("#pic_output").click(function(){
-    //    //get the url:
-    //    var url=$("#pic_output img").attr('src');
-    //    //TODO:download the pic url.
-    //}); 
-    
     /******* code from index.html **********/
 
-    $('#textColor, #shadowColor').ColorPicker({
-        onChange: function(hsb, hex, rgb, el) {
-                      function getCheckedStatus(checkboxID) {
-                          //return 1 if checked, or 0 
-                          if ($(checkboxID).attr('checked')) {
-                              return 'True';
-                          }
-                          else {
-                              return 'False';
-                          }
-                      }
-                      $(el).val("#"+hex);
-                      if ($(el).attr("id")=="textColor")
-    {
-        $("#text_input").css('color', '#' + hex);
-    }
-                      else if (getCheckedStatus("#shadow")=='True') {
-                          $("#text_input").css('text-shadow', '#' + hex+" 0 0 3px");
-                      }
-
-                  },
-            onSubmit: function(hsb, hex, rgb, el) {
-                          hex=hex.toUpperCase();
-                          $(el).val("#"+hex);
-                          $(el).ColorPickerHide();
-                      },
-            onBeforeShow: function () {
-                              $(this).ColorPickerSetColor(this.value);
-                          }
-
-    })
-    .bind('keyup', function() {
-        $(this).ColorPickerSetColor(this.value.replace("#",''));
-    });
-    $("#textColor").val("#FFFFFF");
-    $("#shadowColor").val("#000000"); 
-   
-    /****** end of code from index.html ********/
-    //for x-mas hat
-    
     function getHatArgs()
     {
         //get current image result, 
@@ -314,6 +225,49 @@ $(document).ready(function() {
         $("#xmas-hat").attr("src",img);
         
     });
+    //uploading img
+    $('#uploading_form').ajaxForm({ 
+        // dataType identifies the expected content type of the server response 
+        dataType:'json', 
+ 
+        // success identifies the function to invoke when the server response 
+        // has been received 
+        success:  function(data){
+            var image=data.fn;
+//            image="<image scr=\"{image}\">".s({image:image});
+            $("#preview").html("<img src=\"{image}\" width=\"200\" height=\"200\" >".s({image:image}));
+//           alert(image);
+            return;
+//            
+//            return false;
+        } 
 
+    }); 
+    $("#xmas-slider").slider({
+            max: 359,
+            min: 0,
+            range: "min",
+            slide: function(event, ui) {
+//                var cangle = ui.value;//turn angle to counter clockwise// original 360- ui.value
+//                $("#xmas-hat-angel").val(cangle);
+//                $("#xmas-hat").attr("style", int2css(cangle));
+            }
+    });
+    
+/*
+    $("#hat-holder").resizable({
+            aspectRatio: 1/1,
+            maxHeight: 200,
+            maxWidth: 200,
+            minHeight: 10,
+            minWidth: 10,
+        }).draggable({
+            zIndex: 9999999,
+            containment:"#preview",
+            stop: function() {
+                $(this).removeClass('ui-draggable-dragging');
+            },
+    });//xmas-hat-holder end
+*/
 });//document ready ends
 

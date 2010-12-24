@@ -1,6 +1,7 @@
 # encoding: utf-8
 from django.conf.urls.defaults import *
 from views import home, generate, generate_random, hat
+from upload import upload
 import os.path
 from downloader import downloader
 
@@ -24,6 +25,7 @@ urlpatterns = patterns('',
     (r'^random$', generate_random),
     (r'^result$', downloader),
     (r'^hat$', hat),
+    (r'^upload$', upload),
     (r'^site_media/(?P<path>.*/?)$', 'django.views.static.serve',
             {'document_root': STATIC_DOC_ROOT}),
 )

@@ -15,6 +15,8 @@
         
         <script type="text/javascript" src="site_media/scripts/jquery.js"></script>
         <script type="text/javascript" src="site_media/scripts/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="site_media/scripts/jquery.form.js"></script>
+
         <!-- color picker begins--> 
         <link rel="stylesheet" href="site_media/colorpicker/css/colorpicker.css" type="text/css" /> 
         <link rel="stylesheet" media="screen" type="text/css" href="site_media/colorpicker/css/layout.css" /> 
@@ -51,88 +53,48 @@
             <div id="title">
                 <a href="/"><img src="site_media/images/title.png" id="title_img" alt="爱饭样式头像生成器" /></a>
             </div>
-            <div id="content">
-                <div id="opt_text_input" class="opt left">
-                    <h3>在下方输入要生成的文字</h3>
-                    <input maxlength="1" tabindex="1" id="text_input" class="left sprite" value="饭"/>
-                    <!--<span class="hint left" style="margin:10px 0 0 10px;">本窗格有简单预览效果<br />支持单个汉字或全角英文字符</span>-->
-                </div>
-                <div id="opt_templates" class="opt left">
-                    <h3>预设模板</h3>
-                    <select name="preset" id="preset">
-                        <option value="ifan">爱饭样式</option>
-                        <option value="fanfou">饭否标准</option>
-                        <option value="custom">自定义</option>
-                    </select>
-                </div>
-                <div class="clear"></div>
-                <div class="hr"></div>
-                <div id="opt_bgcolor" class="opt">
-                    <h3 class="left">背景颜色</h3>
-                    <input type="hidden" id="bg" value="c192"/>
-                    <div id="bgcolors_panel" class="left">
-                        <span id="c192" class="bgcolors left">&nbsp;</span>
-                        <span id="c12" class="bgcolors left">&nbsp;</span>
-                        <span id="c36" class="bgcolors left">&nbsp;</span>
-                        <span id="c52" class="bgcolors left">&nbsp;</span>
-                        <span id="c76" class="bgcolors left">&nbsp;</span>
-                        <span id="c100" class="bgcolors left">&nbsp;</span>
-                        <span id="c154" class="bgcolors left">&nbsp;</span>
-                        <span id="c176" class="bgcolors left">&nbsp;</span>
-                        <span id="c206" class="bgcolors left">&nbsp;</span>
-                        <span id="c242" class="bgcolors left">&nbsp;</span>
-                        <span id="c270" class="bgcolors left">&nbsp;</span>
-                        <span id="c288" class="bgcolors left">&nbsp;</span>
-                        <span id="c312" class="bgcolors left">&nbsp;</span>
-                        <span id="c336" class="bgcolors left">&nbsp;</span>
-                        <span id="c336a" class="bgcolors left">&nbsp;</span>
-                        <span id="c0a" class="bgcolors left">&nbsp;</span>
-                        <span id="cx50" class="bgcolors left">&nbsp;</span>
-                        <span id="cx10" class="bgcolors left">&nbsp;</span>
-<!-- waiting for kevin's pics 
-                        <span id="transparent" class="bgcolors left">&nbsp;</span> 
--->
-                    </div>
-                </div>
-                <div id="opt_font" class="opt">
-                    <h3 class="left">字体</h3>
-                    <select name="font_select" id="font_select">
-                        {% for filename, fontname in fontdict.items %}
-                        {% ifequal filename 'iYaHei.ttf' %}
-                        <option value="{{ filename }}" selected>{{ fontname }}</option>
-                        {% else %}
-                        <option value="{{ filename }}">{{ fontname }}</option>
-                        {% endifequal %}
-                        {% endfor %}
-                    </select>
-                </div>
-                <div id="opt_color" class="opt">
-                    <h3 class="left">文字颜色</h3>
-                    <input name="color_picker" class="color_picker" id="textColor" type="text" value="#FFFFFF" />
-                </div>
-                <div id="opt_sdcolor" class="opt">
-                    <h3 class="left">阴影颜色</h3>
-                    <input name="color_picker" class="color_picker" id="shadowColor" type="text" value="#000000" />
-                </div>
-                <div id="opt_adv" class="opt">
-                    <h3 class="left">高级选项</h3>
-                    <ul id="opt_adv_ul" class="left">
-                        <li><input type="checkbox" id="border" checked="on">&nbsp;显示边框</li>                        
-						<li><input type="radio" name="shadow" value="0" checked='on'>&nbsp;无阴影</li>
-						<li><input type="radio" name="shadow" value = "1">&nbsp;阴影描边</li>
-						<li><input type="radio" name="shadow" value = "2">&nbsp;阴影偏移</li>
-                        <li><input type="checkbox" id="highlight" checked="on">&nbsp;背景高光</li>
-                    </ul>
-                </div>
-                <div id="gen">
-                    <div id="btn_gen" class="left"></div>
-                    <span class="hint left" style="margin:20px 0 0 10px;">图像生成后，请右键点击图片，<br />选择图片另存为，并保存成 PNG。</span>
-                </div>
-                <div class="clear"></div>
-                <div id="pic_output"><div id="output_link">点击图片即可下载</div></div> 
-                <div id="history"></div>
-            </div>
         </div>
+        <div id="content">
+        <table width="416" border="1">
+              <tr>
+                <form action='/upload' method="POST" enctype="multipart/form-data" id="uploading_form">
+                <td width="100">upload file</td>
+                <td width="256"><input type="file" name="file" /></td>
+                <td width="72"><input type="submit" value="upload" /></td>
+                </form>
+              </tr>
+              <tr>
+                <td>angle</td>
+                <td>
+                    <div id="xmas-slider"></div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>preview</td>
+                <td align="center"><div id='preview'></div>
+                <div id="hat-holder">
+                    <img id="hat" src="site_media/images/hat.png"/>
+                </div>
+                
+                </td>
+                <td>
+                    <div id="hats">
+                    <ul>
+                        <li><img src="/site_media/images/hat.png"/></li>
+                        <li><img src="/site_media/images/hat2.png"/></li>
+                        <li><img src="/site_media/images/hat3.png"/></li> 
+                        <li><img src="/site_media/images/hat4.png"/></li> 
+                    </ul> 
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td align="center"><button id="add_hat">生成</button></td>
+                <td>&nbsp;</td>
+                </tr>
+            </table>
 
         <div id="footer">
             <div id='versionInfo'>© 2009-2010 <a href="http://iregex.org/" title="Rex Zhasm" target="_blank">.rex</a>, <a href="http://anegie.com/" title="Kevin Deng" target="_blank">Kevin Deng</a>, <a href="http://fanfou.com/nos." title="Nos." target="_blank">Nos.</a> 保留所有权利。
@@ -145,38 +107,9 @@
         </div>
 
 
-        <div id="xmas-special">
-            <div id="xmas-data">
-                <input type="hidden" name="xmas-zoom"/>
-                <input type="hidden" name="xmas-angel"/>
-                <input type="hidden" name="xmas-offset-x"/>
-                <input type="hidden" name="xmas-offset-y"/>
-            </div>
-            <div id="xmas-hat-choose">
-                选择您喜欢的帽子<br />
-                <select id="x_hat">
-                    <option value='hat.png'>hat 1</option>
-                    <option value='hat2.png'>hat 2</option>
-                    <option value='hat3.png'>hat 3</option>
-                    <option value='hat4.png'>hat 4</option> 
-                </select>
-            </div>
-
-            <div id="xmas-off"> </div>
-            <div id="xmas-optins">
-                <input type="hidden" name="xmas-hat-angel"/>
-                <div id="xmas-slider">
-                </div>
-            </div>
-            <hr/>
-            <div id="xmas-hat-holder">
-                <img id="xmas-hat" src="site_media/images/hat.png"/>
-            </div>
-            <div id="avatar-holder">
-                <img id="avatar-img" src=""/>
-            </div>
-			<div><button id="add_hat">生成</button></div>
-        </div>
+          <hr/>
+            
+                                    
 
         <!-- Google Analytics -->
 

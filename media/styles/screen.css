@@ -17,8 +17,6 @@ html,body{font-size:12px;font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sa
 #content{width:810px;position:relative;background:#222;margin:0 auto 20px auto;padding:15px 20px;border:1px solid #000;-webkit-border-radius:10px;-moz-border-radius:10px;-moz-box-shadow:0 2px 5px rgba(0,0,0,.75);-webkit-box-shadow:0 2px 5px rgba(0,0,0,.75);}
 h3{color:#fff;font-weight:normal;font-size:18px;text-shadow:0 1px 0 black;}
 h4{color:#fff;font-weight:normal;font-size:14px;text-shadow:0 1px 0 black;}
-input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:12px;overflow:hidden;}
-#text_input{color:#fff;background-color:#00A3CC;text-shadow:0 0 5px rgba(0,0,0,1);text-align:center;margin:10px 0 0 0;padding:6px;font-size:142px;line-height:142px;height:188px;width:188px;border:3px solid #222;-webkit-transition-property:border,background-color;-webkit-transition-duration:300ms;}
 .sprite{background:-moz-linear-gradient(-45deg,rgba(255,255,255,.4),rgba(255,255,255,0));background: -webkit-gradient(linear,left top,right bottom,from(rgba(255,255,255,.2)),to(rgba(255,255,255,0)));}
 .sdshadow{text-shadow:3px 3px 5px rgba(0,0,0,1);}
 #text_input:hover,#text_input:focus{border:3px solid #fff;}
@@ -73,7 +71,7 @@ input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:
 
 #xmas-special {
     padding:30px;
-    display:none;
+//    display:none;
     background:#F5F5F5;
     position:absolute;
     width:200px;
@@ -108,4 +106,24 @@ input{font-family:"Microsoft Yahei",Helvetica,Arial,Tahoma,sans-serif;font-size:
 
 #xmas-hat-holder img {
     width:100%;
+}
+
+#preview{
+    width:200px;
+	height:200px;
+	vertical-align:middle;
+	align:center; 
+}
+#hats{
+    vertical-align:middle;
+}
+#hats img{
+    height:45px;
+}
+#hats li{
+
+    list-style-type:none;
+}
+#hat-holder{
+/*    position: absolute;*/
 }

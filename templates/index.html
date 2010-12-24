@@ -58,28 +58,27 @@
         <table width="416" border="1">
               <tr>
                 <form action='/upload' method="POST" enctype="multipart/form-data" id="uploading_form">
-                <td width="100">upload file</td>
+                <td width="100">上传文件</td>
                 <td width="256"><input type="file" name="file" /></td>
                 <td width="72"><input type="submit" value="upload" /></td>
                 </form>
               </tr>
               <tr>
-                <td>angle</td>
+                <td>旋转角度</td>
                 <td>
                     <div id="xmas-slider"></div>
                 </td>
                 <td></td>
-                <td width="200"  colspan="4"><div id='result'></result></td>
+                <td rowspan="4" width="200" id="result"></td>
               </tr>
               <tr>
-                <td>preview</td>
+                <td>预览</td>
                 <td align="center">
                     <div id='preview'>
                         <div id="hat-holder" style='display:none;'>
                             <img id="hat" src="site_media/images/hat.png"/>
                         </div>
-                    </div>
-                
+                    </div> 
                 </td>
                 <td>
                     <div id="hats">

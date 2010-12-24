@@ -19,11 +19,10 @@ def draw_hat(bg, hat, angle, offsetLeft, offsetTop, hatWidth, hatHeight):
     
     filename=md5("".join([str(x) for x in [bg, hat, angle, offsetLeft, offsetTop, hatWidth, hatHeight]])).hexdigest()+".png"
     filename=findPath('media/result/')+filename 
-    bg=bg[6:] #/site_media/result/bc98ff0348403f8098a3f7207c29f94f.png
-    
+    bg=bg[6:] #/site_media/result/bc98ff0348403f8098a3f7207c29f94f.png 
     bg=findPath(bg)
-    print bg
     bg=Image.open(bg)
+
     bg=bg.resize((200, 200), Image.ANTIALIAS)
     
     hat=hat[hat.index("media"):hat.index("png")+3]

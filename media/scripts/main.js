@@ -9,65 +9,9 @@ $(document).ready(function() {
         );
     };
         
-    
-    function getCheckedStatus(checkboxID) {
-        //return 1 if checked, or 0 
-        if ($(checkboxID).attr('checked')) {
-            return 'True';
-        }
-        else {
-            return 'False';
-        }
-    } 
-
-      
-    $('#btn_gen').click(function() { 
-        $("#pic_output").html("<img id='loading-icon' src='/site_media/images/loading.gif' />");
-
-        $.get('/gen', getArgs(), function(data) {
-            $("#pic_output").html(data);
-
-        }); //request ends
-
-        //click to download
-               
-    });//submitbutton ends
-
-   
-    /******* code from index.html **********/
-
-    function getHatArgs()
-    {
-        //get current image result, 
-        //HAT: rotation angle, size, offset of the
-        
-        //site_media/result/bc98ff0348403f8098a3f7207c29f94f.png
-                
-        var hat=$("#xmas-hat").attr("src");//   site_media/images/hat.png
-        var angle=parseInt($("#xmas-slider").slider( "option", "value"));
-        angle=360-angle;
-        
-        var base=$("#avatar-img").offset(); //left, top
-        var hatoffset=$("#xmas-hat-holder").offset();
-        var offsetLeft=hatoffset.left-base.left;
-        var offsetTop=hatoffset.top-base.top;
-        var hatWidth=$("#xmas-hat-holder>img").width();
-        var hatHeight=$("#xmas-hat-holder>img").height();
-        
-        return {
-            bg:bg,
-            hat:hat,
-            angle:angle,
-            offsetTop:offsetTop,
-            offsetLeft:offsetLeft,
-            hatHeight:hatHeight,
-            hatWidth:hatWidth
-        }
-    }
-        
     function int2css(deg) {
-            return "-webkit-transform: rotate("+deg+"deg); -moz-transform: rotate("+deg+"deg);";
-        } 
+        return "-webkit-transform: rotate("+deg+"deg); -moz-transform: rotate("+deg+"deg);";
+    } 
 
 
     //uploading img
@@ -80,7 +24,7 @@ $(document).ready(function() {
         success:  function(data){
             var image=data.fn;
 //            image="<image scr=\"{image}\">".s({image:image});
-            $("#preview").attr("style", "background-image:url({image}); background-size: 200px 200px;".s({image:image}));
+            $("#preview").attr("style", "background-image:url({image}); background-size: 200px 200px; -moz-background-size: 200px 200px;".s({image:image}));
             $("#hat-holder").fadeIn();
             $("#hat-holder").resizable({
                     aspectRatio: 1/1,
@@ -118,7 +62,7 @@ $(document).ready(function() {
                 bg=bg.replace(/['"]?\).*$/,'');
 
                 var hat=$("#hat").attr("src");//   site_media/images/hat.png
-                var angle=parseInt($("#xmas-slider").slider( "option", "value"));
+                var angle=360-parseInt($("#xmas-slider").slider( "option", "value")); 
                 
                 var base=$("#preview").offset(); //left, top
                 var hatoffset=$("#hat-holder").offset();

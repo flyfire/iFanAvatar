@@ -254,7 +254,6 @@ $(document).ready(function() {
             }
     });
     
-/*
     $("#hat-holder").resizable({
             aspectRatio: 1/1,
             maxHeight: 200,
@@ -268,6 +267,5 @@ $(document).ready(function() {
                 $(this).removeClass('ui-draggable-dragging');
             },
     });//xmas-hat-holder end
-*/
 });//document ready ends
 

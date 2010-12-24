@@ -43,51 +43,6 @@ def home(request):
     return HttpResponse(html)
 
 def generate(request):
-
-    bg = request.GET.get('bg', '')  #can be changed to POST
-    if not bg or bg=='undefined':#undefined
-        bg='logo192.png'
-    text=request.GET.get('text', '')
-    font=request.GET.get('font', '')
-    textColor=request.GET.get('textColor', '')
-    shadowColor=request.GET.get('shadowColor', '')
-
-    #boolean args
-    border=eval(request.GET.get('border', '')) 
-    shadow=eval(request.GET.get('shadow', '')) 
-    highlight=eval(request.GET.get('highlight', '')) 
-    
-    return my_draw(request,
-            bg=bg,
-            text=text,
-            font=font,
-            textColor=textColor,
-            shadowColor=shadowColor,
-            border=border,
-            shadow=shadow,
-            highlight=highlight)
-    
-    
-def generate_random(request):
-    bgPath = os.getcwd() + "/media/colors/"
-    fontPath = os.getcwd() + "/media/font"
-
-    def randomColorUnit():
-        return str(hex(random.randrange(0x00, 0xFF))[2:]).zfill(2)
-
-    bg = random.choice(os.listdir(bgPath))
-    text = request.GET.get('text', '')
-    font = random.choice(os.listdir(fontPath))
-    textColor = "#" + randomColorUnit() + randomColorUnit() + randomColorUnit()
-    shadowColor = "#" + randomColorUnit() + randomColorUnit() + randomColorUnit()
-    border = random.randint(0, 1)
-    shadow = random.randint(0, 2)
-    highlight = random.randint(0, 1)
-
-    return my_draw(request, bg, text, font, textColor, shadowColor, border, shadow, highlight)
-
-def hat(request):
-    
     bg = request.GET.get('bg', '')  #can be changed to POST
     hat=request.GET.get('hat', '')
     angle=int(float(request.GET.get('angle', '')))
@@ -97,3 +52,6 @@ def hat(request):
     hatWidth=int(float(request.GET.get('hatWidth', '')))
     
     return draw_hat(bg, hat, angle, offsetLeft, offsetTop, hatWidth, hatHeight) 
+        
+   
+    
